@@ -13,7 +13,7 @@ body{
 /* ================= TOP FRAME ================= */
 .top-frame{
   width:90%;
-  height:100px;
+  height:122px;
   margin:40px auto 10px;
   border-radius:40px;
   border:2px solid #4cc9f0;
@@ -29,7 +29,7 @@ body{
   100%{box-shadow:0 0 8px #4cc9f0;}
 }
 .Images{display:flex;width:max-content;animation:scroll 9s linear infinite;}
-.Images img{height:70px;margin:0 50px;border-radius:18px;}
+.Images img{height:120px;margin:10px;border-radius:18px;}
 @keyframes scroll{to{transform:translateX(-50%);}}
 
 /* ================= SECTIONS ================= */
@@ -144,7 +144,7 @@ section{padding:80px 10%;}
   backdrop-filter: blur(6px);
   justify-content:center;
   align-items:center;
-  padding:20px;
+  padding:5px;
 }
 
 .flip-back img{

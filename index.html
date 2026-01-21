@@ -152,14 +152,14 @@ The university follows an outcome-based education system with a strong emphasis 
                 ⏰ 9:00 AM – 5:00 PM
                 <!-- MOBILE ONLY -->
             <div class="mobile-direction">
-                <button type="button" onclick="openDirections()">Get Directions</button>
+                <button type="button" onclick="openLocation()">Get Directions</button>
             </div>
             </div>
         </div>
 
         <!-- RIGHT (DESKTOP ONLY) -->
         <div class="contact-right">
-            <div class="contact-map" onclick="openDirections()">
+            <div class="contact-map" onclick="openLocation()">
                 <img src="map.jpeg" alt="MITS Location Map">
             </div>
         </div>
@@ -189,15 +189,12 @@ The university follows an outcome-based education system with a strong emphasis 
 
 <script>
 
-function openDirections(){
-    const destination =
-      "Madanapalle Institute of Technology & Science, Angallu Road, Madanapalle, Andhra Pradesh 517326, India";
-
-    const url =
-      `https://www.google.com/maps/dir/?api=1&origin=Current+Location&destination=${encodeURIComponent(destination)}`;
-
+function openLocation(){
+    const destination = "Madanapalle Institute of Technology & Science, Angallu Road, Madanapalle, Andhra Pradesh 517326, India";
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
     window.open(url, "_blank");
 }
+
 
 
 // Auto-play video on page load
