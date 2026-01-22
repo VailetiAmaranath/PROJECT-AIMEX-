@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet the Creators</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0d0d0d;
+    color:#fff;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* Creators Section */
+.creators{
+    width:90%;
+    max-width:1200px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+
+/* Card */
+.card{
+    background:#151515;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 25px rgba(255,0,87,0.4);
+}
+
+.card img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    border:3px solid #ff0057;
+    margin-bottom:15px;
+}
+
+.card h3{
+    font-size:20px;
+}
+
+.card p{
+    font-size:14px;
+    opacity:0.7;
+    margin:5px 0 15px;
+}
+
+/* Social Icons */
+.socials{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.socials a{
+    font-size:22px;
+    transition:0.3s;
+}
+
+/* Instagram */
+.insta{
+    color:#ff0057;
+}
+.insta:hover{
+    color:#ff9f00;
+}
+
+/* LinkedIn */
+.linkedin{
+    color:#0a66c2;
+}
+.linkedin:hover{
+    color:#4ea1ff;
+}
+</style>
+</head>
+
+<body>
+
+<section class="creators">
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="dinesh reddy">
+            <h3>Dinesh</h3>
+            <p>Frontend Developer</p>
+            <div class="socials">
+                <a class="insta" href="https://www.instagram.com/_mr_lucky______07" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="linkedin" href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="manoj reddy">
+            <h3>Manoj</h3>
+            <p>Backend Developer</p>
+            <div class="socials">
+                <a class="insta" href="https://www.instagram.com/_m_a_n_o_j_r_e_d_d_y_08" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="linkedin" href="https://www.linkedin.com/in/manoj-manoj-19a48232b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300"  alt="amarnath">
+            <h3>Amarnath</h3>
+            <p>UI / UX Designer</p>
+            <div class="socials">
+                <a class="insta" href="https://www.instagram.com/_mr_perfect_1419" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="linkedin" href="https://www.linkedin.com/in/v-amaranath-v-amaranath-4556ab1b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="kiran kumar reddy">
+            <h3>Kiran</h3>
+            <p>AI & ML Lead</p>
+            <div class="socials">
+                <a class="insta" href="https://www.instagram.com/_user_is_mine" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="linkedin" href="https://www.linkedin.com/in/r-kiran-kumar-reddy-b6a07532b" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="../Images/ajay.jpeg" alt="ajay reddy">
+            <h3>Ajay</h3>
+            <p>Content & Media Lead</p>
+            <div class="socials">
+                <a class="insta" href="https://www.instagram.com/ajay.reddy_x" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="linkedin" href="https://www.linkedin.com/in/ajay-kumar-reddy-69648032b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <!-- NEW 6th MEMBER -->
+        <div class="card">
+            <img src="https://via.placeholder.com/300" alt="madhan mohan">
+            <h3>Madhan Mohan</h3>
+            <p>Event Coordinator</p>
+            <div class="socials">
+                <a class="insta" href="https://www.instagram.com/n_o_b_i_t_a1735?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a class="linkedin" href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>
