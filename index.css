@@ -791,8 +791,8 @@ footer {
 
 .pill {
     position: relative;
-    height: 48px;
-    padding: 0 44px 0 22px;
+    height: 40px;
+    padding: 10px;
     border-radius: 999px;
     background: linear-gradient(120deg, #e6e6e6, #ffd166, #e6e6e6);
     display: flex;
