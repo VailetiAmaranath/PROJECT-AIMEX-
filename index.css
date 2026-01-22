@@ -9,6 +9,7 @@ body {
     color: #fff;
     overflow-x: hidden;
 }
+
 /* ================= FULLSCREEN INTRO VIDEO ================= */
 .intro-overlay {
     position: fixed;
@@ -76,6 +77,7 @@ body {
         font-size: 1rem;
     }
 }
+
 /* Event page body variant: apply this class to the <body> on the events page
    e.g. <body class="events-body">. Kept here so all global body styles live
    in a single stylesheet (`index.css`) as requested. */
@@ -91,25 +93,87 @@ body {
 /* ===== VIDEO BACKGROUND ===== */
 /* ============================ */
 
+/* FIX: Prevent white flash on fast scroll */
+html {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    background: #000;
+    /* Fallback solid black */
+}
+
+/* ENSURE VIDEO BG COVERS EVERYTHING */
 #Video-Bg {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: -2;
     overflow: hidden;
 }
 
 #Video-Bg video {
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-/* OVERLAY */
-#Video-Bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, .45);
+/* FIX: Content sections extend full height */
+.AIMEX,
+section {
+    position: relative;
+    min-height: 40vh;
+    padding-top: 140px;
+    /* Account for fixed navbar */
+}
+
+/* PREVENT WHITE GAPS IN SECTIONS */
+section:not(.AIMEX):not(#eventHighlights):not(#aboutSection):not(.contact-section) {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* MOBILE SCROLL FIX */
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #Video-Bg {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    #Video-Bg video {
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+/* EXTRA SAFETY - HIDE SCROLLBAR FLASH */
+::-webkit-scrollbar {
+    background: #000;
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 /* ===== NAVBAR - MULTI-COLOR GRADIENT ===== */
@@ -117,7 +181,7 @@ nav {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 10px 40px;
+    padding: 10px;
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
@@ -169,12 +233,12 @@ nav {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .Institute-logo img {
-    width: 100%;
-    height: 100%;
+    width: 150%;
+    height: 150%;
     object-fit: cover;
 }
 
@@ -194,10 +258,10 @@ nav {
 /* HERO TITLE */
 .nav-hero-text .mits {
     font-family: system-ui, sans-serif;
-    font-size: 2.1rem;
+    font-size: 5rem;
     /* HERO SIZE */
     font-weight: 900;
-    letter-spacing: 5px;
+    letter-spacing: 1px;
     color: #FFD700;
     animation:
         heroZoomIn 1.1s ease forwards,
@@ -206,11 +270,14 @@ nav {
 
 /* HERO DIVIDER LINE */
 .nav-hero-text .hero-line {
-    height: 2px;
-    background: #FFD700;
+    width: clamp(100px, 12vw, 280px);  /* 🔥 auto responsive */
+    height: 3px;
+    background: linear-gradient(90deg, gold, orange);
     margin: 6px 0;
-    animation: drawHeroLine 1.2s ease forwards;
+    border-radius: 2px;
 }
+
+
 
 /* SUBTEXT */
 .nav-hero-text .deemed {
@@ -296,7 +363,7 @@ nav {
 }
 
 .logo-27 img {
-    height: 100%;
+    height: 150%;
 }
 
 
@@ -310,7 +377,7 @@ nav {
 /* ===== PERFECTLY FITTED MENU - NEW POSITIONING ===== */
 .menu-wrapper {
     position: fixed;
-    top: 142px;
+    top: 180px;
     /* Exactly below navbar (70px height + 20px padding) */
     right: 5px;
     /* Matches navbar right padding */
@@ -737,7 +804,7 @@ section {
 }
 
 .contact a {
-    color: #4cc9f0;
+    color:black;
     text-decoration: none;
     display: block;
     margin: 8px 0;
@@ -961,87 +1028,6 @@ section {
 }
 
 /* ================= END ================= */
-/* ================= CONTACT SECTION ================= */
-.contact-section {
-    padding: 100px 8%;
-}
-
-.contact-container {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr 1fr;
-    gap: 40px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 26px;
-    backdrop-filter: blur(10px);
-    padding: 45px;
-}
-
-/* LEFT */
-.contact-left h3,
-.contact-middle h3 {
-    font-family: 'Cinzel', serif;
-    letter-spacing: 3px;
-    color: #ffd166;
-    margin-bottom: 18px;
-}
-
-.contact-left a {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    margin: 14px 0;
-    color: #4cc9f0;
-    text-decoration: none;
-    transition: .3s;
-}
-
-.contact-left a:hover {
-    transform: translateX(6px);
-    color: #ffd166;
-}
-
-/* MIDDLE */
-.contact-middle {
-    text-align: center;
-    line-height: 1.8;
-}
-
-.contact-middle strong {
-    color: #ffd166;
-}
-
-.info-box {
-    margin-top: 20px;
-    padding: 18px;
-    border-radius: 18px;
-    background: rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* RIGHT MAP */
-.contact-map {
-    width: 100%;
-    max-width: 320px;
-    height: 220px;
-    border-radius: 18px;
-    overflow: hidden;
-    cursor: pointer;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    transition: .3s;
-}
-
-.contact-map img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.contact-map:hover {
-    transform: translateY(-6px);
-    border-color: #4cc9f0;
-}
-
 /* MOBILE DIRECTION BUTTON (HIDDEN ON DESKTOP) */
 .mobile-direction {
     display: none;
@@ -1109,5 +1095,178 @@ section {
 @media(max-width:768px) {
     #loadingOverlay video {
         object-fit: fill;
+    }
+}
+/* MOBILE FIX - DO NOT CHANGE MITS SIZE */
+@media (max-width: 768px) {
+    .nav-hero-text .mits {
+        font-size: 1.9rem;
+        letter-spacing: 1px; /* ✅ SAME AS YOUR ORIGINAL MOBILE SIZE */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-27 img{
+        height: 60px;
+    }
+}
+@media (max-width: 480px) {
+    .Institute-logo img{
+        width: 100%;
+        height: 100%;
+    }
+}
+@media (max-width: 480px) {
+    .menu-wrapper {
+        top: 130px;
+    }
+}
+
+
+
+/* ================= CONTACT SECTION ================= */
+.contact-section {
+    padding: 100px 8%;
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 40px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 26px;
+    backdrop-filter: blur(10px);
+    padding: 45px;
+}
+
+/* LEFT */
+.contact-left h3,
+.contact-middle h3 {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 3px;
+    color: #ffd166;
+    margin-bottom: 18px;
+}
+
+.contact-left a {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin: 14px 0;
+    color:#000;
+    width: fit-content;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.contact-left a:hover {
+    transform: translateX(6px);
+    color:#000;
+}
+
+/* MIDDLE */
+.contact-middle {
+    text-align: center;
+    line-height: 1.8;
+}
+
+.contact-middle strong {
+    color: #ffd166;
+}
+
+.info-box {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* RIGHT (MAP + DETAILS STACK) */
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+/* MAP */
+.contact-map {
+    width: 100%;
+    max-width: 320px;
+    height: 220px;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: .3s;
+}
+
+.contact-map img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contact-map:hover {
+    transform: translateY(-6px);
+    border-color: #4cc9f0;
+}
+
+/* MAP DETAILS */
+.map-details {
+    text-align: center;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    padding: 14px 18px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* MOBILE DIRECTION BUTTON */
+.mobile-direction {
+    display: none;
+    margin-top: 16px;
+}
+
+.mobile-direction button {
+    padding: 12px 26px;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    border-radius: 30px;
+    border: 2px solid #4cc9f0;
+    background: transparent;
+    color: #4cc9f0;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.mobile-direction button:hover {
+    background: #4cc9f0;
+    color: #000;
+}
+
+/* ================= MOBILE VIEW ================= */
+@media (max-width: 900px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .contact-left a {
+        justify-content: center;
+    }
+
+    .contact-map {
+        display: none;
+    }
+
+    .mobile-direction {
+        display: block;
+    }
+    .contact-left{
+        text-align: left;
     }
 }
