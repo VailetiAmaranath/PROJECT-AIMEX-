@@ -7,6 +7,9 @@
 
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=EB+Garamond&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap" rel="stylesheet">
+
 <!-- index.css -->
 <link rel="stylesheet" href="index.css">
 </head>
@@ -47,6 +50,7 @@
     </div>
 </div>
 
+
 <!-- AIMEX -->
 <section class="AIMEX">
     <div>
@@ -58,13 +62,36 @@
     </div>
 </section>
 <!-- ===== PERFECT MATCH COUNTDOWN START ===== -->
-<div class="countdown-3d-wrapper">
-    <div class="countdown-3d" id="countdown3D"></div>
+<!-- HERO COUNTDOWN -->
+<div class="aimex-countdown-wrapper">
+  <div class="aimex-countdown" id="aimexCountdown">
+    <div class="cd-box">
+      <span class="cd-number" id="cd-days">00</span>
+      <span class="cd-label">DAYS</span>
+    </div>
+    <div class="cd-box">
+      <span class="cd-number" id="cd-hours">00</span>
+      <span class="cd-label">HRS</span>
+    </div>
+    <div class="cd-box">
+      <span class="cd-number" id="cd-minutes">00</span>
+      <span class="cd-label">MIN</span>
+    </div>
+    <div class="cd-box">
+      <span class="cd-number" id="cd-seconds">00</span>
+      <span class="cd-label">SEC</span>
+    </div>
+  </div>
 </div>
 <!-- ===== PERFECT MATCH COUNTDOWN END ===== -->
 
 <section>
-    <a href="eventslists.html" class="no-underline explore-btn">Explore Events</a>
+   <a href="javascript:void(0)" 
+   class="no-underline explore-btn"
+   onclick="openEventsWithLoading()">
+   Explore Events
+</a>
+
 </section>
 
 <!-- EVENT HIGHLIGHTS - NOW SHOWS ALL 7 IMAGES -->
@@ -116,7 +143,7 @@ AIMEX features a wide range of technical events including hackathons, coding cha
     <div class="section-title">About Our College</div>
     <div class="about-frame">
         <strong>Madanapalle Institute of Technology and Science (MITS) is a prestigious Deemed to be University located in Madanapalle, Andhra Pradesh. The institution is recognized for its academic excellence, innovation-driven education, and strong research culture. MITS offers a wide range of undergraduate, postgraduate, and doctoral programs in engineering, technology, management, and sciences.
-The university follows an outcome-based education system with a strong emphasis on practical learning and industry relevance. It is equipped with state-of-the-art infrastructure, advanced laboratories, smart classrooms, and modern research facilities. MITS has a highly qualified and experienced faculty who guide students toward academic and professional excellence.</strong>
+        The university follows an outcome-based education system with a strong emphasis on practical learning and industry relevance. It is equipped with state-of-the-art infrastructure, advanced laboratories, smart classrooms, and modern research facilities. MITS has a highly qualified and experienced faculty who guide students toward academic and professional excellence.</strong>
         <br>
         <a href="https://mits.ac.in" target="_blank" class="college-btn">Visit College Website</a>
     </div>
@@ -171,7 +198,7 @@ The university follows an outcome-based education system with a strong emphasis 
 <!-- FLOATING PILL -->
 <div class="pill-container" id="pillContainer">
     <div class="pill" onclick="openPillVideo()">
-        <span class="pill-text">AIMEX</span>
+        <span class="pill-text">AIMEX-PROMO</span>
         <span class="pill-close-mini" onclick="hidePill(event)">×</span>
     </div>
 </div>
@@ -180,12 +207,19 @@ The university follows an outcome-based education system with a strong emphasis 
 <div class="video-overlay" id="videoOverlay">
     <span class="video-overlay-close" onclick="closePillVideo()">×</span>
     <video id="pillVideoEl" controls>
-        <source src="AIMEX-BG.mp4" type="video/mp4">
+        <source src="AIMEX-video1.mp4" type="video/mp4">
     </video>
 </div>
 
-
 <footer>© 2026 AIMEX-MITS</footer>
+
+<!-- ===== LOADING VIDEO OVERLAY ===== -->
+<div id="loadingOverlay">
+    <video id="loadingVideo" autoplay muted playsinline>
+        <source src="LOADING.mp4" type="video/mp4">
+    </video>
+</div>
+
 
 <script>
 
@@ -205,7 +239,11 @@ menuBtn.onclick = () => {
 };
 
 
-eventsBtn.onclick = () => location.href = "eventslists.html";
+eventsBtn.onclick = () => {
+    menuDropdown.classList.remove("show"); // close menu
+    openEventsWithLoading();               // play loading video
+};
+
 
 // GALLERY - PERFECT CENTER SCROLL
 galleryBtn.onclick = () => {
@@ -272,78 +310,71 @@ function hidePill(e){
 
 
 /* ================= PERFECT MATCH COUNTDOWN ================= */
-(()=>{
-    const targetDate = new Date("2026-03-05T09:00:00"); // CHANGE DATE
-    const root = document.getElementById("countdown3D");
-    const labels = ["DAYS","HRS","MIN","SEC"];
-    const blocks = [];
+/* ================= AIMEX COUNTDOWN LOGIC ================= */
 
-    labels.forEach(label=>{
-        const unit = document.createElement("div");
-        unit.className="countdown-unit";
+const targetDate = new Date("2026-03-05T09:00:00"); // EVENT DATE
 
-        const card = document.createElement("div");
-        card.className="countdown-card";
+const dEl = document.getElementById("cd-days");
+const hEl = document.getElementById("cd-hours");
+const mEl = document.getElementById("cd-minutes");
+const sEl = document.getElementById("cd-seconds");
 
-        const num = document.createElement("div");
-        num.className="countdown-num active";
-        num.textContent="00";
+function animateChange(el,newVal){
+    if(el.textContent !== newVal){
+        el.classList.add("flip");
+        setTimeout(()=>{
+            el.textContent = newVal;
+            el.classList.remove("flip");
+        },150);
+    }
+}
 
-        card.appendChild(num);
-        unit.appendChild(card);
+function updateCountdown(){
+    const now = new Date();
+    let diff = targetDate - now;
 
-        const l = document.createElement("div");
-        l.className="countdown-label";
-        l.textContent=label;
-
-        unit.appendChild(l);
-        root.appendChild(unit);
-
-        blocks.push({card,current:num});
-    });
-
-    function update(){
-        const now = new Date();
-        let diff = targetDate - now;
-
-        if(diff <= 0){
-            root.innerHTML = '<div class="countdown-live">EVENT LIVE</div>';
-            return;
-        }
-
-        const values = [
-            Math.floor(diff/86400000),
-            Math.floor(diff/3600000)%24,
-            Math.floor(diff/60000)%60,
-            Math.floor(diff/1000)%60
-        ];
-
-        blocks.forEach((b,i)=>{
-            const v = String(values[i]).padStart(2,"0");
-            if(b.current.textContent !== v){
-                const next = document.createElement("div");
-                next.className="countdown-num enter";
-                next.textContent=v;
-
-                b.card.appendChild(next);
-
-                requestAnimationFrame(()=>{
-                    b.current.classList.add("exit");
-                    next.classList.remove("enter");
-                    next.classList.add("active");
-                });
-
-                setTimeout(()=>{
-                    b.card.removeChild(b.current);
-                    b.current = next;
-                },650);
-            }
-        });
+    if(diff <= 0){
+        document.getElementById("aimexCountdown").innerHTML =
+        "<div style='color:#b7ffec;font-size:28px;font-family:Cinzel;'>EVENT LIVE</div>";
+        return;
     }
 
-    update();
-    setInterval(update,1000);
-})();
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+
+    animateChange(dEl,String(days).padStart(2,"0"));
+    animateChange(hEl,String(hours).padStart(2,"0"));
+    animateChange(mEl,String(minutes).padStart(2,"0"));
+    animateChange(sEl,String(seconds).padStart(2,"0"));
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+
+/* ================= EVENT PAGE LOADING VIDEO ================= */
+
+function openEventsWithLoading(){
+    const overlay = document.getElementById("loadingOverlay");
+    const video = document.getElementById("loadingVideo");
+
+    overlay.style.display = "flex";
+    video.currentTime = 0;
+    video.play();
+
+    // Redirect when video ends
+    video.onended = () => {
+        window.location.href = "eventslists.html";
+    };
+
+    // Safety fallback
+    setTimeout(() => {
+        window.location.href = "eventslists.html";
+    }, 2800); // ⏱ change time if needed
+}
+
 
 </script>
 

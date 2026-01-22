@@ -217,96 +217,127 @@ nav{
 }
 
 /* MENU BELOW NAV */
-.menu-wrapper{
+/* ===== PERFECTLY FITTED MENU - NEW POSITIONING ===== */
+.menu-wrapper {
     position: fixed;
-    top: 130px;              /* directly below navbar */
-    right: 40px;            /* align with navbar right padding */
+    top: 142px;
+    /* Exactly below navbar (70px height + 20px padding) */
+    right: 5px;
+    /* Matches navbar right padding */
     z-index: 1200;
 }
 
-/* DROPDOWN POSITION FIX */
-.menu-bar{
-    position: absolute;
-    top: 55px;              /* opens downward from menu button */
-    right: 0;
-
-    background:linear-gradient(145deg, rgba(5,10,25,0.98), rgba(20,25,60,0.95));
-    border:2px solid rgba(76,201,240,0.5);
-    border-radius:16px;
-    padding:14px 12px;
-
-    display:none;
-    flex-direction:column;
-    gap:12px;
-    min-width:200px;
-
-    box-shadow:0 10px 30px rgba(76,201,240,0.3);
-
-    opacity:0;
-    transform:translateY(-12px);
-    transition:all 0.3s ease;
+.menu {
+    width: 48px;
+    /* Slightly larger for better click area */
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: linear-gradient(45deg, rgba(76, 201, 240, 0.95), rgba(255, 209, 102, 0.95));
+    box-shadow: 0 4px 16px rgba(76, 201, 240, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
 }
 
-/* SHOW STATE */
-.menu-bar.show{
-    display:flex;
-    opacity:1;
-    transform:translateY(0);
+.menu:hover {
+    transform: scale(1.08);
+    box-shadow: 0 8px 25px rgba(76, 201, 240, 0.6);
 }
 
-
-/* MENU BUTTON - POSITIONED BELOW RIGHT LOGO */
-.menu{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    border:2px solid rgba(255,255,255,0.6);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    background:linear-gradient(45deg, rgba(76,201,240,0.9), rgba(255,209,102,0.9));
-    margin-left:0;
-    box-shadow:0 4px 12px rgba(76,201,240,0.4);
+/* PERFECT HAMBURGER LINES */
+.menu span {
+    width: 20px;
+    height: 2px;
+    background: #000;
+    position: relative;
+    transition: 0.3s;
 }
 
-.menu:hover{
-    transform:scale(1.05);
-    box-shadow:0 6px 20px rgba(76,201,240,0.6);
-}
-
-.menu span,
 .menu span::before,
-.menu span::after{
-    content:"";
-    width:18px;
-    height:2px;
-    background:#000;
-    position:relative;
+.menu span::after {
+    content: "";
+    width: 20px;
+    height: 2px;
+    background: #000;
+    position: absolute;
+    left: 0;
+    transition: 0.3s;
 }
-.menu span::before{ top:-6px; position:absolute; }
-.menu span::after{ top:6px; position:absolute; }
 
-/* MENU DROPDOWN - LEFT ALIGNED */
+.menu span::before {
+    top: -7px;
+}
 
-.menu-bar button{
-    font-family:'Cinzel', serif;
-    letter-spacing:2px;
-    padding:20px;
-    border-radius:20px;
-    border:1px solid rgba(255,255,255,0.5);
-    background:linear-gradient(45deg, rgba(76,201,240,0.1), rgba(255,209,102,0.1));
-    color:white;
-    cursor:pointer;
-    width:70%;
-    text-align:left;
-    transition:all 0.3s ease;
+.menu span::after {
+    top: 7px;
 }
-.menu-bar button:hover{
-    background:linear-gradient(45deg, #4cc9f0, #ffd166);
-    color:#000;
-    transform:translateX(5px);
+
+/* DROPDOWN - PERFECTLY FITTED FRAME */
+.menu-bar {
+    position: absolute;
+    top: 50px;
+    /* Opens directly below button */
+    right: 0;
+    /* Perfect right alignment */
+    width: 143px;
+    /* Fixed perfect width */
+    background: linear-gradient(145deg, rgba(5, 10, 25, 0.98), rgba(20, 25, 60, 0.98));
+    border: 2px solid rgba(76, 201, 240, 0.6);
+    border-radius: 20px;
+    padding: 0;
+    /* No padding - perfect fit */
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 15px 40px rgba(76, 201, 240, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    /* Perfect clipping */
 }
+
+/* SHOW STATE - PERFECT ANIMATION */
+.menu-bar.show {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* MENU BUTTONS - PERFECT SPACING */
+.menu-bar button {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 1.5px;
+    padding: 16px 20px;
+    /* Perfect padding */
+    border: none;
+    background: none;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.menu-bar button:last-child {
+    border-bottom: none;
+}
+
+.menu-bar button:hover {
+    background: linear-gradient(90deg, rgba(76, 201, 240, 0.9), rgba(255, 209, 102, 0.9));
+    color: #000;
+    transform: translateX(4px);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Continue with rest of your CSS unchanged... */
 
 /* AIMEX */
 .AIMEX{
@@ -329,6 +360,50 @@ nav{
     font-size:1.15rem;
 }
 
+/* Override ONLY AIMEX h1 - No other elements affected */
+/* ===== AIMEX 2K26 – BRUSH STROKE TITLE ===== */
+.AIMEX h1{
+    font-family:'Rubik Wet Paint', cursive !important;
+    font-size:clamp(3rem,8vw,7rem) !important;
+    font-weight:400 !important;
+    color:#ff8c00 !important;
+    letter-spacing:5px !important;
+    text-transform:uppercase;
+    line-height:0.9;
+    margin-bottom:20px;
+
+    text-shadow:
+        0 6px 18px rgba(255,140,0,0.45),
+        0 2px 6px rgba(0,0,0,0.8);
+}
+
+.AIMEX h1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 0.6;
+    border-radius: 8px;
+}
+
+.AIMEX h1::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 10%;
+    right: 10%;
+    height: 4px;
+    border-radius: 2px;
+    opacity: 0.7;
+}
+.AIMEX p{
+    max-width:700px;
+    line-height:1.7;
+    font-size:1.15rem;
+}
 /* SECTIONS */
 section{
     padding:100px 10%;
@@ -411,7 +486,8 @@ section{
     font-size:1rem;
     cursor:pointer;
     display:block;
-    width:fit-content;
+    width:210px;
+    height: 45px;
     margin:30px auto 60px;
     border-color:#4cc9f0;
     color:#4cc9f0;
@@ -686,100 +762,77 @@ footer{
 }
 
 /* ================= PERFECT MATCH 3D COUNTDOWN ================= */
-.countdown-3d-wrapper{
+/* ================= AIMEX HERO COUNTDOWN ================= */
+
+.aimex-countdown-wrapper{
     width:100%;
     display:flex;
     justify-content:center;
-    margin-bottom:50px;
-    perspective:1600px;
+    margin-top:40px; /* exact spacing under text */
 }
 
-.countdown-3d{
+.aimex-countdown{
     display:flex;
-    gap:30px;
-    animation:countdownFloat 6s ease-in-out infinite;
+    gap:28px;
 }
 
-.countdown-unit{
+.cd-box{
+    width:90px;
+    height:90px;
+    border-radius:16px;
+    background:linear-gradient(145deg,#c9f36b,#6ddccf);
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:8px;
-}
-
-.countdown-card{
-    width:84px;
-    height:84px;
-    position:relative;
-    transform-style:preserve-3d;
-}
-
-.countdown-num{
-    position:absolute;
-    inset:0;
-    display:flex;
-    align-items:center;
     justify-content:center;
-    font-family:'Cinzel', serif;
-    font-size:2.2rem;
+    box-shadow:
+        0 0 20px rgba(120,255,200,0.6),
+        inset 0 0 12px rgba(255,255,255,0.35);
+    animation: floatPulse 4s ease-in-out infinite;
+}
+
+.cd-number{
+    font-size:30px;
     font-weight:700;
-    border-radius:18px;
-    background:linear-gradient(135deg, rgba(255,215,0,.95), rgba(76,201,240,.95));
-    color:#000;
-    box-shadow:
-        0 0 18px rgba(255,215,0,.45),
-        0 0 30px rgba(76,201,240,.35),
-        inset 0 0 18px rgba(255,255,255,.6);
-    transition:
-        transform .65s cubic-bezier(.25,.8,.3,1),
-        opacity .45s ease,
-        box-shadow .45s ease;
-}
-
-.countdown-num.enter{
-    opacity:0;
-    transform:translateZ(90px) rotateX(12deg) rotateY(-12deg) scale(1.05);
-}
-
-.countdown-num.exit{
-    opacity:0;
-    transform:translateZ(-60px) rotateX(-8deg) rotateY(8deg) scale(.95);
-}
-
-.countdown-num.active{
-    box-shadow:
-        0 0 25px rgba(255,215,0,.6),
-        0 0 40px rgba(76,201,240,.45),
-        inset 0 0 22px rgba(255,255,255,.7);
-}
-
-.countdown-label{
+    color:#062a23;
     font-family:'Cinzel', serif;
-    font-size:.7rem;
+    transition:transform 0.35s ease, opacity 0.35s ease;
+}
+
+.cd-label{
+    font-size:12px;
     letter-spacing:2px;
-    color:#ffd166;
+    margin-top:4px;
+    color:#0b3b2f;
+    font-family:'EB Garamond', serif;
 }
 
-.countdown-live{
-    font-family:'Cinzel', serif;
-    font-size:2.6rem;
-    letter-spacing:6px;
-    color:#ffd166;
-    text-shadow:
-        0 0 20px rgba(255,215,0,.9),
-        0 0 40px rgba(76,201,240,.6);
-    animation:liveGlow 1.6s ease-in-out infinite;
-}
-
-@keyframes countdownFloat{
+/* subtle floating glow animation */
+@keyframes floatPulse{
     0%,100%{ transform:translateY(0); }
     50%{ transform:translateY(-6px); }
 }
 
-@keyframes liveGlow{
-    0%,100%{ transform:scale(1); opacity:1; }
-    50%{ transform:scale(1.05); opacity:.85; }
+/* number change animation */
+.flip{
+    transform:scale(1.2);
+    opacity:0.6;
 }
+
+/* MOBILE */
+@media(max-width:768px){
+    .aimex-countdown{
+        gap:14px;
+    }
+    .cd-box{
+        width:70px;
+        height:70px;
+    }
+    .cd-number{
+        font-size:22px;
+    }
+}
+
 /* ================= END ================= */
 /* ================= CONTACT SECTION ================= */
 .contact-section{
@@ -898,5 +951,30 @@ footer{
 
     .mobile-direction{
         display:block; /* SHOW BUTTON */
+    }
+}
+
+/* ================= LOADING OVERLAY ================= */
+
+#loadingOverlay{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:3000;
+}
+
+#loadingOverlay video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    #loadingOverlay video{
+        object-fit:fill;
     }
 }
