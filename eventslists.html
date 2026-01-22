@@ -471,8 +471,20 @@
   const tugExternalForm = "https://forms.gle/tug_external";
   function openTugInternal(){ window.open(tugInternalForm,"_blank"); }
   function openTugExternal(){ window.open(tugExternalForm,"_blank"); }
-  
+ 
+    // ===== Auction Arena =====
+  const AuctionInternalForm = "https://forms.gle/auction_internal";
+  const AuctionExternalForm = "https://forms.gle/auction_external";
+  function openAuctionInternal(){ window.open(AuctionInternalForm,"_blank"); }
+  function openAuctionExternal(){ window.open(AuctionExternalForm,"_blank"); }
 
+    // ===== DODGE BALL =====
+  const dodgeInternalForm = "https://forms.gle/dodge_internal";
+  const dodgeExternalForm = "https://forms.gle/dodge_external";
+  function openDodgeInternal(){ window.open(dodgeInternalForm,"_blank"); }
+  function openDodgeExternal(){ window.open(dodgeExternalForm,"_blank"); }
+  //======================================================
+  // ================ FLIP CARD LOGIC ====================
   document.querySelectorAll(".flip-card").forEach(card=>{
     card.addEventListener("click",e=>{
       if(e.target.classList.contains("register-btn")) return;
