@@ -1,19 +1,21 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  min-height:100vh;
+  height:100vh;  
   color:#fff;
   font-family:'EB Garamond', serif;
   background:
     linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
     url("EVENT-BG.jpeg") center/cover fixed no-repeat;
+  overflow-y:auto;  
+  overflow-x:hidden; 
 }
 
 /* ================= TOP FRAME ================= */
 .top-frame{
   width:90%;
   height:130px;
-  margin:40px auto 10px;
+  margin:20px auto 5px;  
   border-radius:40px;
   border:2px solid #4cc9f0;
   background:rgba(255,255,255,.06);
@@ -32,7 +34,7 @@ body{
 @keyframes scroll{to{transform:translateX(-50%);}}
 
 /* ================= SECTIONS ================= */
-section{padding:80px 10%;}
+section{padding:40px 10%;}
 .section-title{
   font-family:'Cinzel', serif;
   text-align:center;
@@ -112,9 +114,9 @@ section{padding:80px 10%;}
 .flip-front img{
   width:100%;
   height:170px;
-  object-fit:fill; /* CHANGED: contain shows full image */
+  object-fit:fill; 
   object-position:left;
-  padding:.2px; /* Added padding for better fit */
+  padding:.2px; 
   box-sizing:border-box;
 }
 
@@ -152,9 +154,9 @@ section{padding:80px 10%;}
 .flip-back img{
   width:100%;
   height:135px;
-  object-fit:cover; /* CHANGED: contain shows full image */
+  object-fit:cover; 
   object-position:left;
-  padding:3px; /* Added padding for better fit */
+  padding:3px; 
   box-sizing:border-box;
   border-radius:10px;
   margin-bottom:16px;
@@ -218,11 +220,11 @@ section{padding:80px 10%;}
 }
 
 .poster-view img{
-  max-width:90vw;      /* Responsive width */
-  max-height:80vh;     /* Responsive height */
-  width:auto;          /* Maintain aspect ratio */
-  height:auto;         /* Maintain aspect ratio */
-  object-fit:contain;  /* CHANGED: Full image visible */
+  max-width:90vw;      
+  max-height:80vh;     
+  width:auto;          
+  height:auto;         
+  object-fit:contain;  
   object-position:center;
   border-radius:14px;
   box-shadow:0 0 10px #4cc9f0;
@@ -333,7 +335,7 @@ section{padding:80px 10%;}
 
 .back-home{
   display:block;
-  margin:40px auto 60px;
+  margin:40px auto 60px;  /* FIXED: Restored original comfortable spacing */
   padding:12px 28px;
   font-family:'Cinzel', serif;
   border-radius:30px;
