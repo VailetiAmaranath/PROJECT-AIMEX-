@@ -268,31 +268,67 @@
 
     <script>
         
-        /* ================= INTRO VIDEO LOGIC ================= */
-            const introOverlay = document.getElementById("introVideoOverlay");
-            const introVideo = document.getElementById("introVideo");
+        /* ================= INTRO VIDEO LOGIC (BFCache Compatible) ================= */
+const introOverlay = document.getElementById("introVideoOverlay");
+const introVideo = document.getElementById("introVideo");
+const bgVideo = document.getElementById("Video-bg");
 
-            function skipIntro() {
-                introOverlay.style.display = "none";
-                // Start background video immediately
-                document.getElementById("Video-bg").play();
-            }
+// The 'pageshow' event runs every time the page is seen (including Back Button)
+window.addEventListener('pageshow', function(event) {
+    const navEntries = performance.getEntriesByType("navigation");
+    const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
+    const hasSeenIntro = sessionStorage.getItem("introPlayed");
 
-            // Auto-skip when intro video ends
-            introVideo.onended = () => {
-                introOverlay.style.display = "none";
-                // Start background video
-                document.getElementById("Video-bg").play();
-            };
+    // 1. If the page was restored from cache (Back Button)
+    if (event.persisted) {
+        skipIntro(true);
+        return;
+    }
 
-            // Hide intro overlay after skip or end
-            setTimeout(() => {
-                if (introOverlay.style.display !== "none") {
-                    skipIntro();
-                }
-            }, 8000); // Auto-skip after 8 seconds max
+    // 2. If it's a manual reload (Command+R / F5)
+    if (isReload) {
+        playIntro();
+        return;
+    }
 
+    // 3. Normal navigation: Only play if they haven't seen it this session
+    if (!hasSeenIntro) {
+        playIntro();
+    } else {
+        skipIntro(true);
+    }
+});
 
+function playIntro() {
+    introOverlay.style.display = "flex";
+    introVideo.currentTime = 0;
+    introVideo.play().catch(err => {
+        // Handle browsers that block autoplay with sound
+        console.log("Autoplay blocked, skipping intro.");
+        skipIntro(true);
+    });
+    sessionStorage.setItem("introPlayed", "true");
+}
+
+function skipIntro(instant = false) {
+    introOverlay.style.display = "none";
+    introVideo.pause();
+    
+    // Ensure the background video starts
+    if (bgVideo) {
+        bgVideo.play();
+    }
+}
+
+// Auto-skip when intro ends
+introVideo.onended = () => skipIntro();
+
+// Safety fallback (8 seconds)
+setTimeout(() => {
+    if (introOverlay.style.display === "flex") {
+        skipIntro();
+    }
+}, 8000);
         function openLocation() {
             const destination = "Madanapalle Institute of Technology & Science, Angallu Road, Madanapalle, Andhra Pradesh 517326, India";
             const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
