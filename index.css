@@ -21,7 +21,7 @@ body {
     /* FULL HEIGHT */
     z-index: 5000;
     background: #000;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     overflow: hidden;
@@ -1328,4 +1328,3 @@ section {
         margin-bottom: 15px;
     }
 }
-
