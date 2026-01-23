@@ -650,15 +650,15 @@ section {
     letter-spacing: 2px;
     border-radius: 26px;
     border: 2px solid;
-    background: transparent;
+    background-color: #09f5d6;
     font-size: 1rem;
     cursor: pointer;
     display: block;
     width: 210px;
     height: 45px;
     margin: 30px auto 60px;
-    border-color: #4cc9f0;
-    color: #4cc9f0;
+    border-color: #09f5d6;
+    color: #031c16;
     text-decoration: none;
     text-align: center;
     transform-style: preserve-3d;
@@ -666,7 +666,7 @@ section {
 }
 
 .explore-btn:hover {
-    background: #4cc9f0;
+    background: #09d4c0;
     color: #000;
     transform: rotateX(10deg) rotateY(-10deg) translateZ(20px);
     box-shadow: 0 20px 40px rgba(76, 201, 240, 0.5);
@@ -1270,3 +1270,40 @@ section {
         text-align: left;
     }
 }
+
+/* ================= MOBILE FIX FOR EVENT HIGHLIGHTS ================= */
+@media (max-width: 768px) {
+
+    /* Reduce frame width */
+    #eventHighlights {
+        max-width: 95%;
+        padding: 8px;
+        border-radius: 16px;
+    }
+
+    /* Reduce scroller height */
+    .image-scroller {
+        height: 140px;
+        border-radius: 12px;
+    }
+
+    /* Reduce image size */
+    .scroller-track img {
+        flex: 0 0 160px;   /* width of each image */
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    /* Reduce gap between images */
+    .scroller-track {
+        gap: 8px;
+        padding: 6px;
+    }
+
+    /* Title size fix */
+    .scroller-title {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+}
+
