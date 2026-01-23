@@ -913,6 +913,28 @@ section {
     animation: videoZoom .4s ease forwards;
 }
 
+.promo-controls {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.promo-controls button {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(45deg, #4cc9f0, #ffd166);
+    color: #000;
+    font-weight: 600;
+    margin: 0 6px;
+    transition: 0.2s;
+}
+
+.promo-controls button:hover {
+    transform: scale(1.08);
+}
+
 /* CLOSE BUTTON */
 .video-overlay-close {
     position: absolute;

@@ -250,9 +250,12 @@
     <!-- FULLSCREEN VIDEO OVERLAY -->
     <div class="video-overlay" id="videoOverlay">
         <span class="video-overlay-close" onclick="closePillVideo()">×</span>
-        <video id="pillVideoEl" controls>
-            <source src="AIMEX-video1.mp4" type="video/mp4">
-        </video>
+        <video id="pillVideoEl" controls></video>
+
+        <div class="promo-controls">
+            <button onclick="prevPromo()">⏮ Prev</button>
+            <button onclick="nextPromo()">Next ⏭</button>
+        </div>
     </div>
 
     <!-- ===== LOADING VIDEO OVERLAY ===== -->
@@ -264,6 +267,7 @@
 
 
     <script>
+        
         /* ================= INTRO VIDEO LOGIC ================= */
             const introOverlay = document.getElementById("introVideoOverlay");
             const introVideo = document.getElementById("introVideo");
@@ -352,23 +356,56 @@
 
             window.open(googleMapsUrl, '_blank');
         }
+        /* ================= FLOATING PILL VIDEO LOGIC ================= */
         const pillContainer = document.getElementById("pillContainer");
-        const videoOverlay = document.getElementById("videoOverlay");
-        const pillVideo = document.getElementById("pillVideoEl");
+const videoOverlay = document.getElementById("videoOverlay");
+const pillVideo = document.getElementById("pillVideoEl");
 
-        function openPillVideo() {
-            pillContainer.style.display = "none";
-            videoOverlay.style.display = "flex";
-            pillVideo.play();
-        }
+// ✅ ADD YOUR VIDEOS HERE
+const promoVideos = [
+    "AIMEX-video1.mp4",
+    "AIMEX-video2.mp4",
+    "AIMEX-video3.mp4"
+];
 
-        function closePillVideo() {
-            videoOverlay.style.display = "none";
-            pillContainer.style.display = "block";
-            pillVideo.pause();
-            pillVideo.currentTime = 0;
-        }
+let currentPromo = 0;
 
+// Load video
+function loadPromoVideo() {
+    pillVideo.src = promoVideos[currentPromo];
+    pillVideo.load();
+    pillVideo.play();
+}
+
+// Open promo player
+function openPillVideo() {
+    pillContainer.style.display = "none";
+    videoOverlay.style.display = "flex";
+    loadPromoVideo();
+}
+
+// Close promo player
+function closePillVideo() {
+    videoOverlay.style.display = "none";
+    pillContainer.style.display = "block";
+    pillVideo.pause();
+    pillVideo.currentTime = 0;
+}
+
+// Next video
+function nextPromo() {
+    currentPromo = (currentPromo + 1) % promoVideos.length;
+    loadPromoVideo();
+}
+
+// Previous video
+function prevPromo() {
+    currentPromo = (currentPromo - 1 + promoVideos.length) % promoVideos.length;
+    loadPromoVideo();
+}
+
+// Auto play next video
+pillVideo.addEventListener("ended", nextPromo);
         function hidePill(e) {
             e.stopPropagation(); // prevent video open
             pillContainer.style.display = "none";
