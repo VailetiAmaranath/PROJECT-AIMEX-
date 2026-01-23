@@ -197,15 +197,19 @@
 
         <!-- MIDDLE -->
         <div class="contact-middle">
-            <h3>Fest Information</h3>
-            <p>
-                <strong>AIMEX 2K26</strong><br>
-                National Level Technical Fest<br>
-                Department of CSE (AI and ML)<br>
-                <strong style="color:beige;font-size: 21px;">Convener: Dr. S. Padma</strong><br>
+                <strong style="color:beige;font-size: 28px;">Dr. S. Padma</strong><br>
+                       <strong style="color:beige;font-size: 18px;"> Head of the Department - CSE (AI & ML)<br>
+                        E Mail :
+                        aimlhod@mits.ac.in</strong><br>
                 <a style="text-decoration:none;color:beige" href="tel:9154291788" ><b>📞+919154291788</b></a>
-            </p>
-
+            <div class="contact-middle">
+                <h3 style="font-size:25px">Fest Information</h3>
+                <p>
+                    <strong>AIMEX 2K26</strong><br>
+                    National Level Technical Fest<br>
+                    Department of CSE (AI and ML)<br>
+                </p>
+            </div>
             <div class="info-box">
                 📅 05 March 2026<br>
                 ⏰ 9:00 AM – 5:00 PM<br>
@@ -232,6 +236,10 @@
                     <button type="button" onclick="openLocation()">Get Directions</button>
                 </div>
             </div>
+            <!-- MEET CREATORS BUTTON -->
+<a href="#" class="meet-creators-btn">
+    Meet the Creators
+</a>
 
         </div>
 
@@ -269,30 +277,30 @@
     <script>
         
         /* ================= INTRO VIDEO LOGIC (BFCache Compatible) ================= */
+        /* ================= INTRO VIDEO LOGIC (FINAL FIXED VERSION) ================= */
+
 const introOverlay = document.getElementById("introVideoOverlay");
 const introVideo = document.getElementById("introVideo");
 const bgVideo = document.getElementById("Video-bg");
 
-// The 'pageshow' event runs every time the page is seen (including Back Button)
-window.addEventListener('pageshow', function(event) {
-    const navEntries = performance.getEntriesByType("navigation");
-    const isReload = navEntries.length > 0 && navEntries[0].type === 'reload';
-    const hasSeenIntro = sessionStorage.getItem("introPlayed");
+/*
+RULES:
+1. First visit → play intro
+2. Reload (F5 / Ctrl+R) → play intro
+3. Normal navigation / back button → DO NOT play intro
+*/
 
-    // 1. If the page was restored from cache (Back Button)
-    if (event.persisted) {
-        skipIntro(true);
-        return;
+window.addEventListener("load", () => {
+    const navigationType = performance.getEntriesByType("navigation")[0]?.type;
+
+    // If reload → force intro
+    if (navigationType === "reload") {
+        sessionStorage.removeItem("introPlayed");
     }
 
-    // 2. If it's a manual reload (Command+R / F5)
-    if (isReload) {
-        playIntro();
-        return;
-    }
+    const hasPlayed = sessionStorage.getItem("introPlayed");
 
-    // 3. Normal navigation: Only play if they haven't seen it this session
-    if (!hasSeenIntro) {
+    if (!hasPlayed) {
         playIntro();
     } else {
         skipIntro(true);
@@ -302,26 +310,35 @@ window.addEventListener('pageshow', function(event) {
 function playIntro() {
     introOverlay.style.display = "flex";
     introVideo.currentTime = 0;
-    introVideo.play().catch(err => {
-        // Handle browsers that block autoplay with sound
-        console.log("Autoplay blocked, skipping intro.");
+
+    introVideo.play().catch(() => {
         skipIntro(true);
     });
+
     sessionStorage.setItem("introPlayed", "true");
 }
 
 function skipIntro(instant = false) {
     introOverlay.style.display = "none";
     introVideo.pause();
-    
-    // Ensure the background video starts
+
     if (bgVideo) {
         bgVideo.play();
     }
 }
 
-// Auto-skip when intro ends
-introVideo.onended = () => skipIntro();
+// Auto skip when intro video ends
+introVideo.addEventListener("ended", () => {
+    skipIntro();
+});
+
+// Safety fallback (8 seconds max)
+setTimeout(() => {
+    if (introOverlay.style.display === "flex") {
+        skipIntro();
+    }
+}, 8000);
+
 
 // Safety fallback (8 seconds)
 setTimeout(() => {
