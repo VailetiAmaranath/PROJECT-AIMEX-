@@ -18,6 +18,13 @@
 </head>
 
 <body>
+
+<script>
+    // Immediate check: If this is NOT a back-button action, show the overlay right now
+    if (performance.getEntriesByType("navigation")[0].type !== 'back_forward') {
+        document.getElementById('introVideoOverlay').style.display = 'flex';
+    }
+</script>
     <!-- INTRO VIDEO OVERLAY -->
     <div id="introVideoOverlay" class="intro-overlay">
         <video id="introVideo" autoplay muted playsinline>
@@ -99,9 +106,9 @@
     <!-- ===== PERFECT MATCH COUNTDOWN END ===== -->
 
     <section>
-        <a href="javascript:void(0)" class="no-underline explore-btn" onclick="openEventsWithLoading()">
-            Explore Events
-        </a>
+       <a href="eventslists.html" class="no-underline explore-btn">
+    Explore Events
+</a>
 
     </section>
 
@@ -132,17 +139,15 @@
         </div>
     </section>
 
-    <!-- About AIMEX -->
-    <section id="aboutSection">
-        <div class="section-title">About AIMEX</div>
-        <div class="about-frame">
-            AIMEX is the flagship technical fest of the CSE (AI and ML) Department, designed to ignite innovation,
-            creativity, and technical excellence. The fest serves as a dynamic platform where technology meets
-            imagination, bringing together students, innovators, and future technologists under one roof.
-            AIMEX features a wide range of technical events including hackathons, coding challenges, AI model building,
-            data science contests, and project expos that encourage real-time problem solving. Alongside technical
-            events, the fest also hosts fun-filled games, workshops, quizzes, and interactive sessions to ensure an
-            engaging experience for all participants. </div>
+   <section class="about-aimex">
+  <div class="aimex-3d-card">
+    <h2>About AIMEX</h2>
+    <p>
+      AIMEX is a National Level Technical Fest organized by the Department of CSE (AI & ML) at MITS,
+      where Artificial Intelligence meets innovation, creativity, and technology.
+    </p>
+  </div>
+
     </section>
 
 
@@ -175,76 +180,68 @@
     </section>
 
     <section class="contact-section" id="contactSection">
-        <div class="section-title">Contact Us</div>
+    <div class="section-title">Contact Us</div>
 
-        <div class="contact-container">
+    <div class="contact-container">
 
-            <!-- LEFT -->
-            <div class="contact-left">
-                <h3>Contact</h3>
-                <a href="https://mits.ac.in" target="_blank"><b><b><b><strong>🌐 www.mits.ac.in</strong></b></b></b></a>
-                <a href="https://instagram.com/aimex_2k26" target="_blank"><b><strong>📸 aimex_2k26</strong></b></a>
-                <a href="mailto:aimex2k26@gmail.com"><b><strong>📧 aimex2k26@gmail.com</strong></b></a>
-                <a href="tel:1231231231"><b><strong>📞+911231231231</strong></b></a>
-                <strong style="color:beige;font-size: 20px;">Co-ordinators:</strong><br><br>
-                <strong style="color:beige;font-size: 18px;">Mrs. R. Usha</strong>
-                <a style="text-decoration:none;color:beige" href="tel:7032389459"><b>📞+917032389459</b></a>
-                <strong style="color:beige;font-size: 18px;">Mr. V. Sivaraman</strong>
-                <a style="text-decoration:none;color:beige" href="tel:9629590800"><b>📞+919629590800</b></a>
-                <strong style="color:beige;font-size: 18px;">Mrs. B. Tharakeswara Raju</strong>
-                <a style="text-decoration:none;color:beige" href="tel:9391916600"><b>📞+919391916600</b></a>
+        <!-- LEFT -->
+        <div class="contact-left">
+            <h3>Contact</h3>
+            <a href="https://mits.ac.in" target="_blank"><b><b><b><strong>🌐 www.mits.ac.in</strong></b></b></b></a>
+            <a href="https://instagram.com/aimex_2k26" target="_blank"><b><strong>📸 aimex_2k26</strong></b></a>
+            <a href="mailto:aimex2k26@gmail.com"><b><strong>📧 aimex2k26@gmail.com</strong></b></a>
+            <a href="tel:1231231231"><b><strong>📞+911231231231</strong></b></a>
+            <strong style="color:beige;font-size: 20px;">Co-ordinators:</strong><br><br>
+            <strong style="color:beige;font-size: 18px;">Mrs. R. Usha</strong>
+                <a style="text-decoration:none;color:beige" href="tel:7032389459" ><b>📞+917032389459</b></a>
+            <strong style="color:beige;font-size: 18px;">Mr. V. Sivaraman</strong>
+                <a style="text-decoration:none;color:beige" href="tel:9629590800" ><b>📞+919629590800</b></a>
+            <strong style="color:beige;font-size: 18px;">Mrs. B. Tharakeswara Raju</strong>
+                <a style="text-decoration:none;color:beige" href="tel:9391916600" ><b>📞+919391916600</b></a>
+        </div>
+
+        <!-- MIDDLE -->
+        <div class="contact-middle">
+            <h3>Fest Information</h3>
+            <p>
+                <strong>AIMEX 2K26</strong><br>
+                National Level Technical Fest<br>
+                Department of CSE (AI and ML)<br>
+                <strong style="color:beige;font-size: 21px;">Convener: Dr. S. Padma</strong><br>
+                <a style="text-decoration:none;color:beige" href="tel:9154291788" ><b>📞+919154291788</b></a>
+            </p>
+
+            <div class="info-box">
+                📅 05 March 2026<br>
+                ⏰ 9:00 AM – 5:00 PM<br>
+                📍 MITS - NPN BLOCK
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="contact-right">
+
+            <!-- MAP -->
+            <div class="contact-map" onclick="openLocation()">
+                <img src="map.jpeg" alt="MITS Location Map">
             </div>
 
-            <!-- MIDDLE -->
-            <div class="contact-middle">
-                <strong style="color:beige;font-size: 28px;">Dr. S. Padma</strong><br>
-                <strong style="color:beige;font-size: 18px;"> Head of the Department - CSE (AI & ML)<br>
-                    E Mail :
-                    aimlhod@mits.ac.in</strong><br>
-                <a style="text-decoration:none;color:beige" href="tel:9154291788"><b>📞+919154291788</b></a>
-                <div class="contact-middle">
-                    <h3 style="font-size:25px">Fest Information</h3>
-                    <p>
-                        <strong>AIMEX 2K26</strong><br>
-                        National Level Technical Fest<br>
-                        Department of CSE (AI and ML)<br>
-                    </p>
+            <!-- MAP DETAILS -->
+            <div class="map-details">
+                📍 Madanapalle Institute of Technology & Science<br>
+                Angallu Road, Madanapalle<br>
+                Andhra Pradesh – 517325
+
+                <!-- MOBILE ONLY -->
+                <div class="mobile-direction">
+                    <button type="button" onclick="openLocation()">Get Directions</button>
                 </div>
-                <div class="info-box">
-                    📅 05 March 2026<br>
-                    ⏰ 9:00 AM – 5:00 PM<br>
-                    📍 MITS - NPN BLOCK
-                </div>
-            </div>
-
-            <!-- RIGHT -->
-            <div class="contact-right">
-
-                <!-- MAP -->
-                <div class="contact-map" onclick="openLocation()">
-                    <img src="map.jpeg" alt="MITS Location Map">
-                </div>
-
-                <!-- MAP DETAILS -->
-                <div class="map-details">
-                    📍 Madanapalle Institute of Technology & Science<br>
-                    Angallu Road, Madanapalle<br>
-                    Andhra Pradesh – 517325
-
-                    <!-- MOBILE ONLY -->
-                    <div class="mobile-direction">
-                        <button type="button" onclick="openLocation()">Get Directions</button>
-                    </div>
-                </div>
-                <!-- MEET CREATORS BUTTON -->
-                <a href="#" class="meet-creators-btn">
-                    Meet the Creators
-                </a>
-
             </div>
 
         </div>
-    </section>
+
+    </div>
+</section>
 
 
     <!-- FLOATING PILL -->
@@ -265,87 +262,7 @@
             <button onclick="nextPromo()">Next ⏭</button>
         </div>
     </div>
-
-    <!-- ===== LOADING VIDEO OVERLAY ===== -->
-    <div id="loadingOverlay">
-        <video id="loadingVideo" autoplay muted playsinline>
-            <source src="loading3.mp4" type="video/mp4">
-        </video>
-    </div>
-
-
     <script>
-
-        /* ================= INTRO VIDEO LOGIC (BFCache Compatible) ================= */
-        /* ================= INTRO VIDEO LOGIC (FINAL FIXED VERSION) ================= */
-
-        const introOverlay = document.getElementById("introVideoOverlay");
-        const introVideo = document.getElementById("introVideo");
-        const bgVideo = document.getElementById("Video-bg");
-
-        /*
-        RULES:
-        1. First visit → play intro
-        2. Reload (F5 / Ctrl+R) → play intro
-        3. Normal navigation / back button → DO NOT play intro
-        */
-
-        window.addEventListener("load", () => {
-            const navigationType = performance.getEntriesByType("navigation")[0]?.type;
-
-            // If reload → force intro
-            if (navigationType === "reload") {
-                sessionStorage.removeItem("introPlayed");
-            }
-
-            const hasPlayed = sessionStorage.getItem("introPlayed");
-
-            if (!hasPlayed) {
-                playIntro();
-            } else {
-                skipIntro(true);
-            }
-        });
-
-        function playIntro() {
-            introOverlay.style.display = "flex";
-            introVideo.currentTime = 0;
-
-            introVideo.play().catch(() => {
-                skipIntro(true);
-            });
-
-            sessionStorage.setItem("introPlayed", "true");
-        }
-
-        function skipIntro(instant = false) {
-            introOverlay.style.display = "none";
-            introVideo.pause();
-
-            if (bgVideo) {
-                bgVideo.play();
-            }
-        }
-
-        // Auto skip when intro video ends
-        introVideo.addEventListener("ended", () => {
-            skipIntro();
-        });
-
-        // Safety fallback (8 seconds max)
-        setTimeout(() => {
-            if (introOverlay.style.display === "flex") {
-                skipIntro();
-            }
-        }, 8000);
-
-
-        // Safety fallback (8 seconds)
-        setTimeout(() => {
-            if (introOverlay.style.display === "flex") {
-                skipIntro();
-            }
-        }, 8000);
         function openLocation() {
             const destination = "Madanapalle Institute of Technology & Science, Angallu Road, Madanapalle, Andhra Pradesh 517326, India";
             const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
@@ -356,15 +273,17 @@
 
         // Auto-play video on page load
         document.getElementById("Video-bg").play();
+        // Auto-play background video
+        document.getElementById("Video-bg").play();
 
         menuBtn.onclick = () => {
             menuDropdown.classList.toggle("show");
         };
 
 
-        eventsBtn.onclick = () => {
+       eventsBtn.onclick = () => {
             menuDropdown.classList.remove("show"); // close menu
-            openEventsWithLoading();               // play loading video
+            window.location.href = "eventslists.html"; // go directly to events page
         };
 
 
@@ -411,54 +330,54 @@
         }
         /* ================= FLOATING PILL VIDEO LOGIC ================= */
         const pillContainer = document.getElementById("pillContainer");
-        const videoOverlay = document.getElementById("videoOverlay");
-        const pillVideo = document.getElementById("pillVideoEl");
+const videoOverlay = document.getElementById("videoOverlay");
+const pillVideo = document.getElementById("pillVideoEl");
 
-        // ✅ ADD YOUR VIDEOS HERE
-        const promoVideos = [
-            "AIMEX-video1.mp4",
-            "AIMEX-video2.mp4",
-            "AIMEX-video3.mp4"
-        ];
+// ✅ ADD YOUR VIDEOS HERE
+const promoVideos = [
+    "AIMEX-video1.mp4",
+    "AIMEX-video2.mp4",
+    "AIMEX-video3.mp4"
+];
 
-        let currentPromo = 0;
+let currentPromo = 0;
 
-        // Load video
-        function loadPromoVideo() {
-            pillVideo.src = promoVideos[currentPromo];
-            pillVideo.load();
-            pillVideo.play();
-        }
+// Load video
+function loadPromoVideo() {
+    pillVideo.src = promoVideos[currentPromo];
+    pillVideo.load();
+    pillVideo.play();
+}
 
-        // Open promo player
-        function openPillVideo() {
-            pillContainer.style.display = "none";
-            videoOverlay.style.display = "flex";
-            loadPromoVideo();
-        }
+// Open promo player
+function openPillVideo() {
+    pillContainer.style.display = "none";
+    videoOverlay.style.display = "flex";
+    loadPromoVideo();
+}
 
-        // Close promo player
-        function closePillVideo() {
-            videoOverlay.style.display = "none";
-            pillContainer.style.display = "block";
-            pillVideo.pause();
-            pillVideo.currentTime = 0;
-        }
+// Close promo player
+function closePillVideo() {
+    videoOverlay.style.display = "none";
+    pillContainer.style.display = "block";
+    pillVideo.pause();
+    pillVideo.currentTime = 0;
+}
 
-        // Next video
-        function nextPromo() {
-            currentPromo = (currentPromo + 1) % promoVideos.length;
-            loadPromoVideo();
-        }
+// Next video
+function nextPromo() {
+    currentPromo = (currentPromo + 1) % promoVideos.length;
+    loadPromoVideo();
+}
 
-        // Previous video
-        function prevPromo() {
-            currentPromo = (currentPromo - 1 + promoVideos.length) % promoVideos.length;
-            loadPromoVideo();
-        }
+// Previous video
+function prevPromo() {
+    currentPromo = (currentPromo - 1 + promoVideos.length) % promoVideos.length;
+    loadPromoVideo();
+}
 
-        // Auto play next video
-        pillVideo.addEventListener("ended", nextPromo);
+// Auto play next video
+pillVideo.addEventListener("ended", nextPromo);
         function hidePill(e) {
             e.stopPropagation(); // prevent video open
             pillContainer.style.display = "none";
@@ -508,29 +427,20 @@
 
         updateCountdown();
         setInterval(updateCountdown, 1000);
+        
+const card = document.querySelector(".aimex-3d-card");
 
+card.addEventListener("mousemove", (e) => {
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left - rect.width / 2;
+  const y = e.clientY - rect.top - rect.height / 2;
 
-        /* ================= EVENT PAGE LOADING VIDEO ================= */
+  card.style.transform = `rotateX(${ -y / 20 }deg) rotateY(${ x / 20 }deg) scale(1.05)`;
+});
 
-        function openEventsWithLoading() {
-            const overlay = document.getElementById("loadingOverlay");
-            const video = document.getElementById("loadingVideo");
-
-            overlay.style.display = "flex";
-            video.currentTime = 0;
-            video.play();
-
-            // Redirect when video ends
-            video.onended = () => {
-                window.location.href = "eventslists.html";
-            };
-
-            // Safety fallback
-            setTimeout(() => {
-                window.location.href = "eventslists.html";
-            }, 5000); // ⏱ change time if needed
-        }
-
+card.addEventListener("mouseleave", () => {
+  card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+});
 
     </script>
 
