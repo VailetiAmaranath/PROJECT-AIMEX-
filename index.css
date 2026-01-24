@@ -11,23 +11,20 @@ body {
 }
 
 /* ================= FULLSCREEN INTRO VIDEO ================= */
+/* Update this section in your index.css */
 .intro-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
-    /* FULL WIDTH */
     height: 100vh;
-    /* FULL HEIGHT */
-    z-index: 5000;
+    z-index: 9999;
     background: #000;
-    display: none;
+    display: none; /* Changed to none to favor the 'Back' button speed */
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    /* NO SCROLLBARS */
+    transition: opacity 0.8s ease;
 }
-
 #introVideo {
     width: 100vw;
     /* FULL SCREEN WIDTH */
@@ -757,45 +754,6 @@ section {
     margin: 0 auto;
 }
 
-.contact .map-container {
-    margin: 40px auto;
-    width: 300px;
-    height: 200px;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, .3);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, .4);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-.contact .map-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(76, 201, 240, .3);
-    border-color: #4cc9f0;
-}
-
-.contact .map-container::after {
-    content: "Click for Directions";
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(76, 201, 240, 0.9);
-    color: #000;
-    padding: 5px 12px;
-    border-radius: 12px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    white-space: nowrap;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.contact .map-container:hover::after {
-    opacity: 1;
-}
 
 .contact .map-image {
     width: 100%;
@@ -1328,48 +1286,138 @@ section {
         margin-bottom: 15px;
     }
 }
-/* ================= MEET CREATORS BUTTON ================= */
+/* ================= ABOUT AIMEX FRAME ONLY ================= */
 
-.meet-creators-btn {
-    margin-top: 10px;
-    padding: 12px 28px;
-    font-family: 'Cinzel', serif;
-    letter-spacing: 2px;
-    border-radius: 30px;
-    border: 2px solid #ffd166;
-    background: transparent;
-    color: #ffd166;
-    text-decoration: none;
-    font-size: 1rem;
+.about-frame {
+    background: linear-gradient(145deg, #0b132b, #1c2541);
+    border-radius: 22px;
+    border: 2px solid rgba(0, 200, 255, 0.25);
+    padding: 40px;
     position: relative;
     overflow: hidden;
-    transition: all 0.35s ease;
-    box-shadow: 0 0 0 rgba(255, 209, 102, 0);
-    animation: creatorsPulse 2.8s infinite;
+    transition: all 0.6s ease;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
 }
 
-/* Hover effect */
-.meet-creators-btn:hover {
-    background: #ffd166;
-    color: #000;
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(255, 209, 102, 0.6);
+/* Soft glow animation */
+.about-frame::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(90deg, rgba(0,200,255,0.3), rgba(0,200,255,0.8), rgba(0,200,255,0.3));
+    z-index: -1;
+    filter: blur(10px);
+    opacity: 0.6;
+    animation: glowPulse 4s ease-in-out infinite;
 }
 
-/* Click effect */
-.meet-creators-btn:active {
-    transform: scale(0.96);
+/* Light wave effect */
+.about-frame::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(0,200,255,0.08), transparent);
+    transition: 0.8s;
 }
 
-/* Glow pulse animation */
-@keyframes creatorsPulse {
-    0% {
-        box-shadow: 0 0 0 rgba(255, 209, 102, 0.0);
-    }
-    50% {
-        box-shadow: 0 0 25px rgba(255, 209, 102, 0.6);
-    }
-    100% {
-        box-shadow: 0 0 0 rgba(255, 209, 102, 0.0);
-    }
+/* Hover animation */
+.about-frame:hover {
+    transform: translateY(-14px) scale(1.03);
+    box-shadow: 0 35px 90px rgba(0, 200, 255, 0.5);
+    border-color: rgba(0, 200, 255, 0.9);
+}
+
+.about-frame:hover::before {
+    opacity: 1;
+    filter: blur(18px);
+    animation: glowFast 1.5s ease-in-out infinite;
+}
+
+.about-frame:hover::after {
+    left: 100%;
+}
+
+/* Animations */
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes glowFast {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+.about-aimex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+  perspective: 1000px; /* 3D depth */
+}
+
+/* 3D Neon Card */
+.aimex-3d-card {
+  position: relative;
+  max-width: 750px;
+  padding: 40px 50px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #050505, #0b0b0b);
+  color: white;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: 0.4s ease;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.8),
+    inset 0 0 20px rgba(0, 255, 255, 0.15);
+}
+
+/* Neon Border Glow */
+.aimex-3d-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(120deg, cyan, transparent, cyan);
+  filter: blur(12px);
+  opacity: 0.7;
+  z-index: -1;
+  animation: neonPulse 4s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* 3D Hover Effect */
+.aimex-3d-card:hover {
+  transform: rotateX(10deg) rotateY(-10deg) scale(1.05);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.9),
+    0 0 50px cyan;
+  border-color: cyan;
+}
+
+/* Text Styles */
+.aimex-3d-card h2 {
+  font-size: 34px;
+  margin-bottom: 15px;
+  color: cyan;
+  letter-spacing: 1px;
+  transition: 0.3s;
+}
+
+.aimex-3d-card:hover h2 {
+  text-shadow: 0 0 20px cyan;
+  letter-spacing: 3px;
+}
+
+.aimex-3d-card p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #ddd;
 }
