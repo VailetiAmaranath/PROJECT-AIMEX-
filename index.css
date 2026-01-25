@@ -20,11 +20,13 @@ body {
     height: 100vh;
     z-index: 9999;
     background: #000;
-    display: none; /* Changed to none to favor the 'Back' button speed */
+    display: none;
+    /* Changed to none to favor the 'Back' button speed */
     align-items: center;
     justify-content: center;
     transition: opacity 0.8s ease;
 }
+
 #introVideo {
     width: 100vw;
     /* FULL SCREEN WIDTH */
@@ -267,7 +269,8 @@ nav {
 
 /* HERO DIVIDER LINE */
 .nav-hero-text .hero-line {
-    width: clamp(100px, 12vw, 280px);  /* 🔥 auto responsive */
+    width: clamp(100px, 12vw, 280px);
+    /* 🔥 auto responsive */
     height: 3px;
     background: linear-gradient(90deg, gold, orange);
     margin: 6px 0;
@@ -762,7 +765,7 @@ section {
 }
 
 .contact a {
-    color:black;
+    color: black;
     text-decoration: none;
     display: block;
     margin: 8px 0;
@@ -1077,25 +1080,29 @@ section {
         object-fit: fill;
     }
 }
+
 /* MOBILE FIX - DO NOT CHANGE MITS SIZE */
 @media (max-width: 768px) {
     .nav-hero-text .mits {
         font-size: 1.9rem;
-        letter-spacing: 1px; /* ✅ SAME AS YOUR ORIGINAL MOBILE SIZE */
+        letter-spacing: 1px;
+        /* ✅ SAME AS YOUR ORIGINAL MOBILE SIZE */
     }
 }
 
 @media (max-width: 480px) {
-    .logo-27 img{
+    .logo-27 img {
         height: 60px;
     }
 }
+
 @media (max-width: 480px) {
-    .Institute-logo img{
+    .Institute-logo img {
         width: 100%;
         height: 100%;
     }
 }
+
 @media (max-width: 480px) {
     .menu-wrapper {
         top: 130px;
@@ -1134,7 +1141,7 @@ section {
     gap: 12px;
     align-items: center;
     margin: 14px 0;
-    color:#000;
+    color: #000;
     width: fit-content;
     text-decoration: none;
     transition: .3s;
@@ -1142,7 +1149,7 @@ section {
 
 .contact-left a:hover {
     transform: translateX(6px);
-    color:#000;
+    color: #000;
 }
 
 /* MIDDLE */
@@ -1246,7 +1253,8 @@ section {
     .mobile-direction {
         display: block;
     }
-    .contact-left{
+
+    .contact-left {
         text-align: left;
     }
 }
@@ -1269,7 +1277,8 @@ section {
 
     /* Reduce image size */
     .scroller-track img {
-        flex: 0 0 160px;   /* width of each image */
+        flex: 0 0 160px;
+        /* width of each image */
         height: 100%;
         border-radius: 10px;
     }
@@ -1286,6 +1295,7 @@ section {
         margin-bottom: 15px;
     }
 }
+
 /* ================= ABOUT AIMEX FRAME ONLY ================= */
 
 .about-frame {
@@ -1304,7 +1314,7 @@ section {
     content: "";
     position: absolute;
     inset: -2px;
-    background: linear-gradient(90deg, rgba(0,200,255,0.3), rgba(0,200,255,0.8), rgba(0,200,255,0.3));
+    background: linear-gradient(90deg, rgba(0, 200, 255, 0.3), rgba(0, 200, 255, 0.8), rgba(0, 200, 255, 0.3));
     z-index: -1;
     filter: blur(10px);
     opacity: 0.6;
@@ -1319,7 +1329,7 @@ section {
     left: -100%;
     width: 200%;
     height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(0,200,255,0.08), transparent);
+    background: linear-gradient(120deg, transparent, rgba(0, 200, 255, 0.08), transparent);
     transition: 0.8s;
 }
 
@@ -1342,82 +1352,105 @@ section {
 
 /* Animations */
 @keyframes glowPulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.8; }
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
 }
 
 @keyframes glowFast {
-    0%, 100% { opacity: 0.6; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
+
 .about-aimex {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 100px 20px;
-  perspective: 1000px; /* 3D depth */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    perspective: 1000px;
+    /* 3D depth */
 }
 
 /* 3D Neon Card */
 .aimex-3d-card {
-  position: relative;
-  max-width: 750px;
-  padding: 40px 50px;
-  border-radius: 22px;
-  background: linear-gradient(145deg, #050505, #0b0b0b);
-  color: white;
-  text-align: center;
-  transform-style: preserve-3d;
-  transition: 0.4s ease;
-  border: 2px solid rgba(0, 255, 255, 0.3);
-  box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.8),
-    inset 0 0 20px rgba(0, 255, 255, 0.15);
+    position: relative;
+    max-width: 750px;
+    padding: 40px 50px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #050505, #0b0b0b);
+    color: white;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: 0.4s ease;
+    border: 2px solid rgba(0, 255, 255, 0.3);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.8),
+        inset 0 0 20px rgba(0, 255, 255, 0.15);
 }
 
 /* Neon Border Glow */
 .aimex-3d-card::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: 22px;
-  background: linear-gradient(120deg, cyan, transparent, cyan);
-  filter: blur(12px);
-  opacity: 0.7;
-  z-index: -1;
-  animation: neonPulse 4s ease-in-out infinite;
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: 22px;
+    background: linear-gradient(120deg, cyan, transparent, cyan);
+    filter: blur(12px);
+    opacity: 0.7;
+    z-index: -1;
+    animation: neonPulse 4s ease-in-out infinite;
 }
 
 @keyframes neonPulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 /* 3D Hover Effect */
 .aimex-3d-card:hover {
-  transform: rotateX(10deg) rotateY(-10deg) scale(1.05);
-  box-shadow:
-    0 30px 60px rgba(0, 0, 0, 0.9),
-    0 0 50px cyan;
-  border-color: cyan;
+    transform: rotateX(10deg) rotateY(-10deg) scale(1.05);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.9),
+        0 0 50px cyan;
+    border-color: cyan;
 }
 
 /* Text Styles */
 .aimex-3d-card h2 {
-  font-size: 34px;
-  margin-bottom: 15px;
-  color: cyan;
-  letter-spacing: 1px;
-  transition: 0.3s;
+    font-size: 34px;
+    margin-bottom: 15px;
+    color: cyan;
+    letter-spacing: 1px;
+    transition: 0.3s;
 }
 
 .aimex-3d-card:hover h2 {
-  text-shadow: 0 0 20px cyan;
-  letter-spacing: 3px;
+    text-shadow: 0 0 20px cyan;
+    letter-spacing: 3px;
 }
 
 .aimex-3d-card p {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #ddd;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ddd;
 }
