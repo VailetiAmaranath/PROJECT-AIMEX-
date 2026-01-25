@@ -266,11 +266,7 @@
         document.getElementById("Video-bg").play();
         // Auto-play background video
         document.getElementById("Video-bg").play();
-
-        menuBtn.onclick = () => {
-            menuDropdown.classList.toggle("show");
-        };
-
+       
 
         eventsBtn.onclick = () => {
             menuDropdown.classList.remove("show"); // close menu
@@ -432,6 +428,27 @@
         card.addEventListener("mouseleave", () => {
             card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
         });
+        /* ================= MENU FIX ================= */
+
+            const menuBtn = document.getElementById("menuBtn");
+            const menuDropdown = document.getElementById("menuDropdown");
+
+            /* Toggle menu */
+            menuBtn.addEventListener("click", function (e) {
+                e.stopPropagation();
+                menuDropdown.classList.toggle("show");
+            });
+
+            /* Prevent closing when clicking inside menu */
+            menuDropdown.addEventListener("click", function (e) {
+                e.stopPropagation();
+            });
+
+            /* Close menu when clicking anywhere else */
+            document.addEventListener("click", function () {
+                menuDropdown.classList.remove("show");
+            });
+
 
     </script>
 
