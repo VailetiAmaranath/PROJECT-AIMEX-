@@ -17,11 +17,18 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'EB Garamond', serif;
-      color: white;
-      overflow-x: hidden;
-    }
+    html, body {
+  width: 100%;
+  min-height: 100%;
+  background: #000;        /* ✅ prevents white flash */
+}
+
+body {
+  font-family: 'EB Garamond', serif;
+  color: white;
+  overflow-x: hidden;
+}
+
 
     /* ================= VIDEO BACKGROUND ================= */
     .bg-video {
@@ -36,11 +43,21 @@
 
     /* Dark Overlay */
     .video-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.78);
-      z-index: -2;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.78);
+  z-index: -2;
+}
+section, div {
+  background-color: transparent;
+}
+.bg-video {
+  background: black;
+}
+
 
     /* ================= NEW HEADER ================= */
     .top-header {
