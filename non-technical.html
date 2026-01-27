@@ -46,7 +46,7 @@
     .top-header {
       width: 100%;
       height: 120px;
-      padding: 15px 50px;
+      padding: 50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,7 +54,12 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(76, 201, 240, 0.4);
     }
-
+@media (max-width: 768px) {
+      .top-header {
+        padding:1px;
+        height:145px;
+      }
+    }
     /* LEFT LOGO */
     .header-left img {
       height: 85px;
@@ -81,7 +86,7 @@
 
     /* RIGHT DOOR */
     .header-right {
-      font-size: 3rem;
+      font-size: 2rem;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -393,11 +398,11 @@
 
     <div class="header-center">
       <h1>MITS</h1>
-      <p>Madanapalle Institute of Technology and Science</p>
+      <p>Madanapalle Institute of Technology & Science<br> Deemed to be University,<br>Andhra Pradesh</p></p>
     </div>
 
     <div class="header-right" onclick="window.location.href='index.html'">
-      🚪
+      🏠<p style="font-size:15px;">Back to Home</p>
     </div>
 
   </div>

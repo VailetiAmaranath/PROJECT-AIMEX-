@@ -17,11 +17,20 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'EB Garamond', serif;
-      color: white;
-      overflow-x: hidden;
-    }
+    html, body {
+  width: 100%;
+  min-height: 100%;
+  background: black;     /* ✅ Prevent white gaps */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'EB Garamond', serif;
+  color: white;
+  overflow-x: hidden;
+}
+
 
     /* ================= VIDEO BACKGROUND ================= */
     .bg-video {
@@ -36,17 +45,47 @@
 
     /* Dark Overlay */
     .video-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.78);
-      z-index: -2;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.78);
+  z-index: -2;
+}
+  .bg-video {
+    background: black;
+  }
+
+  .bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.video-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  z-index: 1;
+}
+
+body * {
+  position: relative;
+  z-index: 2;
+}
+
+
 
     /* ================= NEW HEADER ================= */
     .top-header {
       width: 100%;
       height: 120px;
-      padding: 15px 50px;
+      padding:50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -54,7 +93,12 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(76, 201, 240, 0.4);
     }
-
+@media (max-width: 768px) {
+      .top-header {
+        padding:1px;
+        height:145px;
+      }
+    }
     /* LEFT LOGO */
     .header-left img {
       height: 85px;
@@ -81,7 +125,7 @@
 
     /* RIGHT DOOR */
     .header-right {
-      font-size: 3rem;
+      font-size: 2rem;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -373,13 +417,18 @@
       background: red;
       color: black;
     }
+
+
+
+    
+
   </style>
 </head>
 
 <body>
 
   <!-- 🎥 VIDEO BACKGROUND -->
-  <video class="bg-video" autoplay muted loop playsinline>
+  <video class="bg-video" autoplay muted loop playsinline preload="auto">
     <source src="eventsbg.mp4" type="video/mp4">
   </video>
   <div class="video-overlay"></div>
@@ -393,12 +442,15 @@
 
     <div class="header-center">
       <h1>MITS</h1>
-      <p>Madanapalle Institute of Technology and Science</p>
+      <p>Madanapalle Institute of Technology & Science<br> Deemed to be University,<br>Andhra Pradesh</p></p>
     </div>
 
-    <div class="header-right" onclick="window.location.href='index.html'">
-      🚪
+    <!-- ✅ Back to Home Button -->
+<div class="header-right" onclick="window.location.href='index.html'">
+      🏠<p style="font-size:15px;">Back to Home</p>
     </div>
+
+
 
   </div>
 

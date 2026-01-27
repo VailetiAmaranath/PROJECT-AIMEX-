@@ -31,26 +31,35 @@ body {
 
 
     /* ================= VIDEO BACKGROUND ================= */
-    .bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -3;
-    }
-
-    /* Dark Overlay */
-    .video-overlay {
+    /* ✅ VIDEO BACKGROUND FIX */
+.bg-video {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.78);
-  z-index: -2;
+  object-fit: cover;
+  z-index: 0;
+  background: black;
 }
+
+/* ✅ DARK OVERLAY */
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1;
+}
+
+/* ✅ CONTENT ABOVE VIDEO */
+body * {
+  position: relative;
+  z-index: 2;
+}
+
 section, div {
   background-color: transparent;
 }
@@ -63,7 +72,7 @@ section, div {
     .top-header {
       width: 100%;
       height: 120px;
-      padding: 15px 50px;
+      padding:50px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -71,7 +80,12 @@ section, div {
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(76, 201, 240, 0.4);
     }
-
+@media (max-width: 768px) {
+      .top-header {
+        padding:1px;
+        height:145px;
+      }
+    }
     /* LEFT LOGO */
     .header-left img {
       height: 85px;
@@ -98,7 +112,7 @@ section, div {
 
     /* RIGHT DOOR */
     .header-right {
-      font-size: 3rem;
+      font-size: 2rem;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -396,7 +410,7 @@ section, div {
 <body>
 
   <!-- 🎥 VIDEO BACKGROUND -->
-  <video class="bg-video" autoplay muted loop playsinline>
+  <video class="bg-video" autoplay muted loop playsinline preload="auto">
     <source src="eventsbg.mp4" type="video/mp4">
   </video>
   <div class="video-overlay"></div>
@@ -410,11 +424,11 @@ section, div {
 
     <div class="header-center">
       <h1>MITS</h1>
-      <p>Madanapalle Institute of Technology and Science</p>
+      <p>Madanapalle Institute of Technology & Science<br> Deemed to be University,<br>Andhra Pradesh</p></p>
     </div>
 
     <div class="header-right" onclick="window.location.href='index.html'">
-      🚪
+      🏠<p style="font-size:15px;">Back to Home</p>
     </div>
 
   </div>
@@ -850,11 +864,7 @@ section, div {
 
   </div>
 
-  <!-- FULLSCREEN POSTER -->
-  <div class="poster-view" id="posterView">
-    <div class="poster-close" onclick="closePoster()">✕</div>
-    <img id="posterImg" src="">
-  </div>
+
 
   <!-- DETAILS MODALS -->
   <div class="modal" id="buzzDetails">
