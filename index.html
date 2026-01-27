@@ -1567,6 +1567,7 @@
             <a href="#contact" class="mobile-link">Contact Us</a>
         </div>
 
+
  </nav>
    <!-- HERO SECTION -->
    <section id="home" class="hero-section">
@@ -1898,7 +1899,7 @@
       messages.scrollTop = messages.scrollHeight;
 
       // Call backend
-      let response = await fetch("http://localhost:5000/chat", {
+      let response = await fetch("http://20.244.48.41/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: msg })
