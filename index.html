@@ -46,7 +46,7 @@
            TOP NAVIGATION BAR - IIT LEVEL 
         =========================================== */
         .top-nav {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
@@ -140,15 +140,21 @@
 
           /* Hamburger Button */
           .mobile-menu-btn {
-              display: none;
-              position: absolute;
-              bottom: -25px;
-              right: 10px;
-              flex-direction: column;
-              gap: 5px;
-              cursor: pointer;
-              z-index: 3000;
-          }
+            display: none;
+            position: fixed;          /* ✅ Always visible while scrolling */
+
+            top: 170px;               /* ✅ Just BELOW navbar (155px + gap) */
+            right: 20px;              /* ✅ Right side */
+
+            flex-direction: column;
+            gap: 5px;
+
+            cursor: pointer;
+            z-index: 99999;
+        }
+
+
+
 
           .mobile-menu-btn span {
               width: 28px;
@@ -160,8 +166,8 @@
           /* Mobile Menu Popup */
           /* ✅ MOBILE MENU POPUP BUTTON STYLE */
          .mobile-menu {
-        position: absolute;
-        top: 135px;
+        position: fixed;
+        top: 200px;              /* ✅ Opens below hamburger button */
         right: 20px;
         width: 200px;
         height: 360px;
@@ -1044,7 +1050,7 @@
           display: flex;
          }
         .hero-section {
-              height: calc(100vh - 120px);
+              height: calc(100vh - 80px);
               margin-top: 120px;
           }
 
@@ -1511,7 +1517,7 @@
 
   </style>
 </head>
-<body>
+<>
   <!-- TOP NAVIGATION -->
   <nav class="top-nav">
       <div class="nav-container">
@@ -1542,23 +1548,26 @@
               <img src="27.png" alt="Right Logo">
           </div>
       </div>
-      <!-- MOBILE HAMBURGER BUTTON -->
-      <div class="mobile-menu-btn" id="mobileMenuBtn">
-          <span></span>
-          <span></span>
-          <span></span>
-      </div>
-      <!-- MOBILE MENU POPUP -->
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="#home" class="mobile-link">Home</a>
-        <a href="#gallery" class="mobile-link">Gallery</a>
-        <a href="#about" class="mobile-link">About</a>
-        <a href="#events" class="mobile-link">Events</a>
-        <a href="#sponsors" class="mobile-link">Sponsors</a>
-        <a href="#contact" class="mobile-link">Contact Us</a>
-     </div>
+      </nav>
 
-  </nav>
+        <!-- MOBILE BUTTON OUTSIDE NAV -->
+        <div class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!--  MOBILE MENU OUTSIDE NAV -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#gallery" class="mobile-link">Gallery</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#events" class="mobile-link">Events</a>
+            <a href="#sponsors" class="mobile-link">Sponsors</a>
+            <a href="#contact" class="mobile-link">Contact Us</a>
+        </div>
+
+ </nav>
    <!-- HERO SECTION -->
    <section id="home" class="hero-section">
        <video class="hero-video" autoplay muted loop playsinline poster="hero-poster.jpg">
