@@ -1401,120 +1401,182 @@
       font-family: Arial, sans-serif;
     }
 
-    /* Chat Icon Button */
-    #chatToggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: black;
-      color: white;
-      border: none;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      font-size: 25px;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      z-index: 1000;
-    }
+    /* ==============================
+   AIMEX CHATBOT PREMIUM UI
+================================= */
 
-    /* Chat Box Popup */
-    #chatBox {
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 320px;
-      height: 420px;
-      background: #6a00ff;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-      display: none;
-      flex-direction: column;
-      overflow: hidden;
-      z-index: 999;
-    }
+/* ======================================
+   🤖 AIMEX CHATBOT — IIT LEVEL DESIGN
+====================================== */
 
-    /* Header */
-    #chatHeader {
-      background: black;
-      color: white;
-      padding: 12px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 16px;
-    }
+.aimex-chat-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #d4af37, #00d4ff);
+  color: black;
+  font-size: 26px;
+  z-index: 99999;
+  box-shadow: 0 0 35px rgba(212,175,55,0.45);
+  transition: 0.35s ease;
+}
 
-    /* Messages Area */
-    #messages {
-      flex: 1;
-      padding: 10px;
-      overflow-y: auto;
-      font-size: 14px;
-      background: gray;
-    }
+.aimex-chat-btn:hover {
+  transform: scale(1.12) rotate(6deg);
+}
 
-    /* User Message */
-    .userMsg {
-      text-align: right;
-      margin: 8px 0;
-    }
+/* Chat Bubble Intro */
+.aimex-bubble {
+  position: fixed;
+  bottom: 105px;
+  right: 30px;
+  background: rgba(15,23,42,0.92);
+  border: 1px solid rgba(212,175,55,0.5);
+  color: white;
+  padding: 14px 18px;
+  border-radius: 16px;
+  font-size: 14px;
+  max-width: 240px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: bubbleFade 7s ease forwards;
+  z-index: 99998;
+}
 
-    .userMsg span {
-      display: inline-block;
-      background: black;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 15px 15px 0px 15px;
-      max-width: 80%;
-    }
+@keyframes bubbleFade {
+  0% { opacity: 0; transform: translateY(20px); }
+  15% { opacity: 1; transform: translateY(0); }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(20px); }
+}
 
-    /* Bot Message */
-    .botMsg {
-      text-align: left;
-      margin: 8px 0;
-    }
+/* Chatbox Window */
+.aimex-chatbox {
+  position: fixed;
+  bottom: 110px;
+  right: 25px;
+  width: 360px;
+  height: 480px;
+  background: rgba(15,23,42,0.95);
+  backdrop-filter: blur(18px);
+  border-radius: 20px;
+  border: 1px solid rgba(212,175,55,0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(30px) scale(0.92);
+  transition: 0.45s ease;
+  z-index: 99999;
+}
 
-    .botMsg span {
-      display: inline-block;
-      background: #e0e0e0;
-      color: black;
-      padding: 8px 12px;
-      border-radius: 15px 15px 15px 0px;
-      max-width: 80%;
-    }
+/* Active Open */
+.aimex-chatbox.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
 
-    /* Input Area */
-    #inputArea {
-      display: flex;
-      border-top: 1px solid #ddd;
-      background: white;
-    }
+/* Header */
+.aimex-header {
+  padding: 14px 16px;
+  background: rgba(212,175,55,0.10);
+  color: #d4af37;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-    #userInput {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      outline: none;
-      font-size: 14px;
-    }
+.aimex-header i {
+  cursor: pointer;
+}
 
-    #sendBtn {
-      background: black;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-    }
+/* Messages */
+.aimex-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
 
-    #sendBtn:hover {
-      background: #5200cc;
-    }
+/* Bot & User */
+.botMsg span,
+.userMsg span {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 14px;
+  max-width: 80%;
+  margin-bottom: 10px;
+}
 
-    .cta-primary {
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    }
+.botMsg span {
+  background: rgba(255,255,255,0.08);
+  border-left: 3px solid #00d4ff;
+}
+
+.userMsg {
+  text-align: right;
+}
+
+.userMsg span {
+  background: rgba(212,175,55,0.25);
+  border-right: 3px solid #d4af37;
+}
+
+/* Typing Dots Animation */
+.typing span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+  background: #d4af37;
+  border-radius: 50%;
+  animation: typingDots 1.2s infinite;
+}
+
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingDots {
+  0%,100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-5px); }
+}
+
+/* Input */
+.aimex-input {
+  display: flex;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.aimex-input input {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+}
+
+.aimex-input button {
+  width: 60px;
+  border: none;
+  cursor: pointer;
+  background: #d4af37;
+  transition: 0.3s;
+}
+
+.aimex-input button:hover {
+  background: #00d4ff;
+}
+        /* ===========================================
+            EXPLORE BUTTON INSIDE EVENT CARDS
+          =========================================== */
     /* ✅ Explore Button Inside Event Cards */
  .explore-btn {
     margin-top: 20px;
@@ -1870,87 +1932,123 @@
 
     </div>
 </div>
-  <!-- Chat Icon -->
-  <button type="button" id="chatToggle">🤖</button>
+<!-- ==============================
+     🤖 AIMEX ASSISTANT CHATBOT
+================================= -->
 
-  <!-- Chat Box -->
-  <div id="chatBox">
+<!-- Floating Welcome Toast -->
+<div id="chatToast" class="chat-toast">
+  👋 Hey! I'm <b>AIMEX Assistant</b>. Ask me anything about the fest!
+</div>
 
-    <div id="chatHeader">AIMEX Fest Assistant 🤖</div>
 
-    <div id="messages">
-      <div class="botMsg">
-        <span>Hello there! Ask me about AIMEX Fest 🎉</span>
-      </div>
-    </div>
 
-    <div id="inputArea">
-      <input id="userInput" type="text" placeholder="Type a message...">
-      <button type="button" id="sendBtn">➤</button>
+<!-- Floating Assistant Intro Bubble -->
+<div class="aimex-bubble" id="aimexBubble">
+  👋 Hi, I'm <b>AIMEX Assistant</b><br>
+  Ask me anything about the Fest!
+</div>
+
+<!-- Chat Floating Button -->
+<button class="aimex-chat-btn" id="chatToggle">
+  <i class="fas fa-laptop-code"></i>
+</button>
+
+<!-- Chat Window -->
+<div class="aimex-chatbox" id="chatBox">
+
+  <!-- Header -->
+  <div class="aimex-header">
+    <span><i class="fas fa-robot"></i> AIMEX Assistant</span>
+    <i class="fas fa-xmark" id="chatClose"></i>
+  </div>
+
+  <!-- Messages -->
+  <div class="aimex-messages" id="messages">
+    <div class="botMsg">
+      <span>Hello There! 👋<br>How can I help you today?</span>
     </div>
   </div>
 
+  <!-- Input -->
+  <div class="aimex-input">
+    <input id="userInput" type="text" placeholder="Type your message...">
+    <button id="sendBtn">
+      <i class="fas fa-paper-plane"></i>
+    </button>
+  </div>
+
+</div>
+
+
+
   <script>
-    const chatToggle = document.getElementById("chatToggle");
-    const chatBox = document.getElementById("chatBox");
+  const chatToggle = document.getElementById("chatToggle");
+  const chatBox = document.getElementById("chatBox");
+  const chatClose = document.getElementById("chatClose");
 
-    // Toggle Chat Popup
-    chatToggle.onclick = () => {
-      chatBox.style.display =
-        chatBox.style.display === "flex" ? "none" : "flex";
-    };
+  const sendBtn = document.getElementById("sendBtn");
+  const userInput = document.getElementById("userInput");
+  const messages = document.getElementById("messages");
 
-    const sendBtn = document.getElementById("sendBtn");
-    const userInput = document.getElementById("userInput");
-    const messages = document.getElementById("messages");
+  // Open Chat
+  chatToggle.onclick = () => {
+    chatBox.classList.toggle("active");
+  };
 
-    async function sendMessage() {
-      let msg = userInput.value.trim();
-      if (!msg) return;
+  // Close Chat
+  chatClose.onclick = () => {
+    chatBox.classList.remove("active");
+  };
 
-      // Show user message
-      messages.innerHTML += `
-        <div class="userMsg"><span>${msg}</span></div>
-      `;
+  async function sendMessage() {
+    let msg = userInput.value.trim();
+    if (!msg) return;
 
-      userInput.value = "";
+    // User Message
+    messages.innerHTML += `
+      <div class="userMsg"><span>${msg}</span></div>
+    `;
+    userInput.value = "";
 
-      // Bot typing placeholder
-      messages.innerHTML += `
-        <div class="botMsg"><span>Typing...</span></div>
-      `;
-      messages.scrollTop = messages.scrollHeight;
+    // Typing Animation
+    const typingDiv = document.createElement("div");
+    typingDiv.className = "botMsg";
+    typingDiv.innerHTML = `
+      <span class="typing">
+        <span></span><span></span><span></span>
+      </span>
+    `;
+    messages.appendChild(typingDiv);
+    messages.scrollTop = messages.scrollHeight;
 
-      // Call backend
-      let response = await fetch("https://aimex-lkh9.onrender.com/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: msg })
-      });
-
-      let data = await response.json();
-
-      // Remove typing...
-      messages.lastElementChild.remove();
-
-      // Show bot reply
-      messages.innerHTML += `
-        <div class="botMsg"><span>${data.reply}</span></div>
-      `;
-
-      messages.scrollTop = messages.scrollHeight;
-    }
-
-    // Send button click
-    sendBtn.onclick = sendMessage;
-
-    // ENTER key support
-    userInput.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        sendMessage();
-      }
+    // API Call
+    let response = await fetch("https://aimex-chatbot.onrender.com/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: msg })
     });
-  </script>
+
+    let data = await response.json();
+
+    typingDiv.remove();
+
+    // Bot Reply
+    messages.innerHTML += `
+      <div class="botMsg"><span>${data.reply}</span></div>
+    `;
+
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  sendBtn.onclick = sendMessage;
+
+  userInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
+</script>
+
+
 
    <script>
        const targetDate = new Date("2026-03-05T09:00:00+05:30"); // AIMEX IST
