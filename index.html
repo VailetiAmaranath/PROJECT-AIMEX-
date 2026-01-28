@@ -509,7 +509,7 @@
             /* Track must be very wide */
             .gallery-track {
                 display: flex;
-                width: max-content;
+                width: fit-content;
                 gap: 1.5rem;
                 animation: galleryScroll 30s linear infinite;
             }
@@ -1396,6 +1396,7 @@
   display: block;
 }
 
+
   body {
       font-family: Arial, sans-serif;
     }
@@ -1514,6 +1515,15 @@
     text-decoration: none;
     text-align: center;
     }
+    /* ✅ Explore Button Inside Event Cards */
+ .explore-btn {
+    margin-top: 20px;
+    width: 180px;
+    font-size: 1rem;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+}
+
 
   </style>
 </head>
@@ -1674,7 +1684,7 @@
         </div>
         <div class="card">
           <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
-          <h3>About the College</h3>
+          <h3>About the University</h3>
           <p>Madanapalle Institute of Technology and Science (MITS) is a prestigious Deemed to be University
             located in Madanapalle, Andhra Pradesh. The institution is recognized for its academic excellence,
             innovation-driven education, and strong research culture. MITS offers a wide range of undergraduate,
@@ -1694,28 +1704,38 @@
       <source src="eventbg.mp4" type="video/mp4">
     </video>
     <!-- Dark Overlay -->
-    <div class="events-overlay"></div>
-    <div class="container">
-      <h2 class="section-title">EVENT SPECTRUM</h2>
-      <p class="section-subtitle">From Code to Culture - Experience it all</p>
-      <div class="event-swiper">
-      <a href="technical.html" class="event-link">
-        <div class="event-card card">
-          <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
-          <h3>Technical Events</h3>
-          <p>•PAPER EXPRESS • AI-TECH EXHIBIT• GLITCH HUNT • IQNITE • TECH QUEENS  </p>
-        </div>
-      </a>
+   <div class="event-swiper">
 
-      <a href="non-technical.html" class="event-link">
-        <div class="event-card card">
-          <div class="card-icon"><i class="fas fa-gamepad"></i></div>
-          <h3>Non-Technical Events</h3>
-          <p>BUZZ GAMES • GRAIN GRAB •E-SPORTS •TUG OF WAR • AUCTION ARENA • DODGE BALL</p>
-        </div>
-      </a>
-      </div>
-    </div>
+  <!-- TECHNICAL EVENTS CARD -->
+  <div class="event-card card">
+    <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+    <h3>Technical Events</h3>
+    <p>• PAPER XPRESS • AI-TECH EXHIBIT • GLITCH HUNT • IQNITE • TECH QUEENS</p>
+
+    <!-- ✅ Explore Button -->
+    <button type="button"
+      class="cta-primary explore-btn"
+      onclick="window.location.href='technical.html'">
+      Explore
+    </button>
+  </div>
+
+  <!-- NON-TECHNICAL EVENTS CARD -->
+  <div class="event-card card">
+    <div class="card-icon"><i class="fas fa-gamepad"></i></div>
+    <h3>Non-Technical Events</h3>
+    <p>BUZZ GAMES • GRAIN GRAB • E-SPORTS • TUG OF WAR • AUCTION ARENA • DODGE BALL</p>
+
+    <!-- ✅ Explore Button -->
+    <button type="button"
+      class="cta-primary explore-btn"
+      onclick="window.location.href='non-technical.html'">
+      Explore
+    </button>
+  </div>
+
+</div>
+
   </section>
     <!-- SPONSORS SECTION -->
      <section id="sponsors" class="section about-section">
@@ -1798,13 +1818,16 @@
                    </div>
                </div>
                <div class="footer-section">
-                   <h3>Student Team</h3>
+                   <h3>AIMEX Team</h3>
                    <div class="footer-buttons">
+                    <button type="button" class="footer-btn" onclick="window.location.href='convenor.html'">
+                           <i class="fas fa-user-tie"></i>Convenor
+                       </button>
                        <button type="button" class="footer-btn" onclick="window.location.href='coordinators.html'">
-                           <i class="fas fa-users"></i> Meet Coordinators
+                           <i class="fas fa-users"></i>Coordinators
                        </button>
                        <button type="button" class="footer-btn" onclick="window.location.href='creators.html'">
-                           <i class="fas fa-crown"></i> Core Creators
+                           <i class="fas fa-crown"></i>Creators
                        </button>
                    </div>
                </div>
