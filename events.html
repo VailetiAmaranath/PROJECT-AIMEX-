@@ -353,64 +353,166 @@ section, div {
       cursor: pointer;
     }
 
-    /* ================= MODALS ================= */
-    .modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, .85);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 3000;
-    }
+   /* ================= PREMIUM AIMEX MODAL ================= */
 
-    .modal-box {
-      background: #111;
-      padding: 35px;
-      width: 360px;
-      border-radius: 20px;
-      text-align: center;
-      border: 2px solid #4cc9f0;
-    }
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 4000;
+}
 
-    .modal-box h2 {
-      color: #4cc9f0;
-      font-family: 'Cinzel', serif;
-      margin-bottom: 15px;
-    }
+.modal-box {
+  background: rgba(20, 20, 20, 0.95);
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 18px;
+  padding: 35px;
+  scroll-behavior: smooth;
+  border: 1px solid rgba(76, 201, 240, 0.5);
+  box-shadow: 0 0 40px rgba(76, 201, 240, 0.3);
+  color: white;
+}
+.modal-box::-webkit-scrollbar {
+  width: 6px;
+}
 
-    .modal-box p {
-      margin-bottom: 15px;
-      font-size: 1rem;
-      opacity: .85;
-    }
+.modal-box::-webkit-scrollbar-thumb {
+  background: #4cc9f0;
+  border-radius: 10px;
+}
 
-    .coordinator {
-      color: gold;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-    }
+/* Title */
+.modal-box h2,
+.event-title {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: 26px;
+  color: #4cc9f0;
+  margin-bottom: 12px;
+  text-shadow: 0 0 10px #4cc9f0;
+}
 
-    .close-btn {
-      padding: 10px 20px;
-      border-radius: 25px;
-      border: 1px solid red;
-      background: transparent;
-      color: red;
-      cursor: pointer;
-    }
+.event-desc {
+  text-align: center;
+  opacity: 0.8;
+  margin-bottom: 25px;
+}
 
-    .close-btn:hover {
-      background: red;
-      color: black;
-    }
+/* Section */
+.section {
+  margin-bottom: 30px;
+}
+
+.section h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #4cc9f0;
+}
+
+/* Coordinators Grid */
+.coordinator-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.coordinator-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(76, 201, 240, 0.3);
+  transition: 0.3s ease;
+}
+
+.coordinator-card:hover {
+  background: rgba(76, 201, 240, 0.08);
+  transform: translateY(-3px);
+}
+
+.coordinator-card p {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.coordinator-card strong {
+  color: #ffffff;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.coordinator-card a {
+  text-decoration: none;
+  color: #4cc9f0;
+  font-weight: 500;
+}
+
+.rules-section ol {
+  padding-left: 20px;
+  line-height: 1.6;
+}
+
+.team-size {
+  margin-top: 15px;
+  font-weight: 600;
+  color: gold;
+}
+
+/* Close Button */
+.close-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 30px;
+  border: 1px solid red;
+  background: transparent;
+  color: red;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: 0.3s ease;
+}
+
+.close-btn:hover {
+  background: red;
+  color: black;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+  .modal-box {
+    padding: 22px;
+  }
+
+  .coordinator-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-title {
+    font-size: 20px;
+  }
+
+  .section h3 {
+    font-size: 16px;
+  }
+}
+
+
+
   </style>
 </head>
 
 <body>
 
   <!-- 🎥 VIDEO BACKGROUND -->
-  <video class="bg-video" autoplay muted loop playsinline preload="auto">
+  <video class="bg-video" autoplay muted loop playsinline preload="metadata">
     <source src="eventsbg.mp4" type="video/mp4">
   </video>
   <div class="video-overlay"></div>
@@ -424,7 +526,7 @@ section, div {
 
     <div class="header-center">
       <h1>MITS</h1>
-      <p>Madanapalle Institute of Technology & Science<br> Deemed to be University,<br>Andhra Pradesh</p></p>
+      <p>Madanapalle Institute of Technology & Science<br> Deemed to be University,<br>Andhra Pradesh</p>
     </div>
 
     <div class="header-right" onclick="window.location.href='index.html'">
@@ -580,80 +682,349 @@ section, div {
     <img id="posterImg" src="">
   </div>
 
-  <!-- DETAILS MODALS -->
-  <div class="modal" id="paperDetails">
-    <div class="modal-box">
-      <h2>PAPER XPRESS</h2>
-      <p>Paper Presentation Competition for innovative research ideas.</p>
-      <div class="coordinator">Faculty-Coordinator: Dr. M. Rajeswari | <a href="tel:+91 9566358584" style="text-decoration:none">📞 +91 9566358584</a></div>
-      <div class="coordinator">Sr. Coordinator: Pavani | <a href="tel:+91 9052983757" style="text-decoration:none;">📞 +91 9052983757</a></div>
-      <div class="coordinator">Coordinator: Sanju Sree | <a href="tel:+91 7285950090" style="text-decoration:none;">📞 
-        +91 7285950090</a></div>
-      <div class="coordinator">Coordinator: Guru Vydehi | <a href="tel:+91 8790365431" style="text-decoration:none;">📞 +91 8790365431</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('paperDetails')">Close</button>
-    </div>
-  </div>
+ <div class="modal" id="paperDetails">
+  <div class="modal-box">
 
-  <div class="modal" id="aiDetails">
-    <div class="modal-box">
-      <h2>AI-TECH EXHIBIT</h2>
-      <p>Showcase AI-based innovative solutions and models.</p>
-      <div class="coordinator">Faculty-Coordinator: Mr. B. Tharakeswara Raju | <a href="tel:+91
-         9391916600"style="text-decoration:none;">📞 +91 9391916600</a></div>
-      <div class="coordinator">Sr. Coordinator: Priya Darshini | <a href="tel:+91 9014989332" style="text-decoration:none;">📞 +91 9014989332</a></div>
-      <div class="coordinator">Coordinator: Rudra Teja | <a href="tel:+91 9440058160" style="text-decoration:none;">📞 
-        +91 9440058160</a></div>
-      <div class="coordinator">Coordinator: Jashwanth | <a href="tel:+91 9063020479" style="text-decoration:none;">📞 
-        +91 9063020479</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('aiDetails')">Close</button>
-    </div>
-  </div>
+    <h2 class="event-title">PAPER XPRESS</h2>
+    <p class="event-desc">
+      Paper Presentation Competition for innovative research ideas.
+    </p>
 
-  <div class="modal" id="iqDetails">
-    <div class="modal-box">
-      <h2>IQNITE</h2>
-      <p>Quiz competition testing AI and ML knowledge.</p>
-      <div class="coordinator">Faculty-Coordinator: Mrs. R. Usha | <a href="tel:+91 7032389459" style="text-decoration:none;">📞 +91 7032389459</a></div>
-      <div class="coordinator">Sr. Coordinator: Kumar Raja | <a href="tel:+91 9849411037" style="text-decoration:none;">📞 +91 9849411037</a></div>
-      <div class="coordinator">Sr. Coordinator: Karthik | <a href="tel:+91 9959186924" style="text-decoration:none;">📞 +91 9959186924</a></div>
-      <div class="coordinator">Coordinator: Kusuma | <a href="tel:+91 8897932748" style="text-decoration:none;">📞 
-        +91 8897932748</a></div>
-      <div class="coordinator">Coordinator: Naga Charitha | <a href="tel:+91 9177505560" style="text-decoration:none;">📞 
-        +91 9177505560</a></div>
-      <div class="coordinator">Coordinator: Bhavitha| <a href="tel:+91 9390286782" style="text-decoration:none;">📞
-         +91 9390286782</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('iqDetails')">Close</button>
-    </div>
-  </div>
+    <!-- Coordinators -->
+    <div class="section">
+      <h3>🎓 Event Coordinators</h3>
 
-  <div class="modal" id="glitchDetails">
-    <div class="modal-box">
-      <h2>GLITCH HUNT</h2>
-      <p>Debugging competition to fix errors quickly.</p>
-      <div class="coordinator">Faculty-Coordinator: Mr. P. Udaya Kumar  | <a href="tel:+91 6381240108" style="text-decoration:none;">📞 +91 6381240108</a></div>
-      <div class="coordinator">Sr. Coordinator: Gowthami | <a href="tel:+91 9347001613" style="text-decoration:none;">📞 
-        +91 9347001613</a></div>
-      <div class="coordinator">Coordinator: Amrutha | <a href="tel:+91 8712240192" style="text-decoration:none;">📞
-         +91 8712240192</a></div>
-      <div class="coordinator">Coordinator: Likitha | <a href="tel:+91 9346166450" style="text-decoration:none;">📞
-         +91 9346166450</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('glitchDetails')">Close</button>
-    </div>
-  </div>
+      <div class="coordinator-grid">
 
-  <div class="modal" id="queensDetails">
-    <div class="modal-box">
-      <h2>TECH QUEENS</h2>
-      <p>Project showcase event for innovative ideas.</p>
-      <div class="coordinator">Faculty-Coordinator: Dr. E. Sandhya | <a href="tel:+91 7989189465" style="text-decoration:none">📞 +91 7989189465</a></div>
-      <div class="coordinator">Faculty-Coordinator: Mr. P. Azam | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Sr. Coordinator: Akhila | <a href="tel:+91 9390258904" style="text-decoration:none;">📞 +91 9390258904</a></div>
-      <div class="coordinator">Coordinator: Chandana Deepthi | <a href="tel:+91 9347742160" style="text-decoration:none;">📞 +91 9347742160</a></div>
-      <div class="coordinator">Coordinator: Niharika | <a href="tel:+91 9440358409" style="text-decoration:none;">📞 +91 9440358409</a></div>
-      <div class="coordinator">Coordinator: Tejomai | <a href="tel:+91 8247048165" style="text-decoration:none;">📞 +91 8247048165</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('queensDetails')">Close</button>
+        <div class="coordinator-card">
+          <strong>Faculty Coordinator</strong>
+          <p>Dr. M. Rajeswari</p>
+          <a href="tel:+919566358584">📞 +91 9566358584</a>
+        </div>
+
+        <div class="coordinator-card">
+          <strong>Senior Coordinator</strong>
+          <p>Pavani</p>
+          <a href="tel:+919052983757">📞 +91 9052983757</a>
+        </div>
+
+        <div class="coordinator-card">
+          <strong>Coordinator</strong>
+          <p>Sanju Sree</p>
+          <a href="tel:+917285950090">📞 +91 7285950090</a>
+        </div>
+
+        <div class="coordinator-card">
+          <strong>Coordinator</strong>
+          <p>Guru Vydehi</p>
+          <a href="tel:+918790365431">📞 +91 8790365431</a>
+        </div>
+
+      </div>
     </div>
+
+    <!-- Rules -->
+    <div class="section rules-section">
+      <h3>📜 Rules & Guidelines</h3>
+      <ol>
+      <li>Every participant must prepare their own PPT.</li>
+      <li>You can choose your own theme for the presentation.</li>
+      <li>The last date to submit the PPT is <strong>01-03-2026</strong>.</li>
+      <li>Plagiarism will be checked, and acceptance will be given on <strong>02-03-2026</strong>.</li>
+      <li>Team size: <strong>Minimum 1 member and maximum 3 members</strong> per team.</li>
+      <li>The PPT must contain <strong>6–7 slides</strong>.</li>
+
+      </ol>
+
+      <p class="team-size">
+        👥 <strong>Team Size:</strong> 1 – 3 Participants
+      </p>
+    </div>
+
+    <button type="button" class="close-btn" onclick="closeModal('paperDetails')">
+      Close
+    </button>
+
   </div>
+</div>
+
+
+
+ <div class="modal" id="aiDetails">
+  <div class="modal-box">
+
+    <!-- Title -->
+    <h2 class="event-title">AI-TECH EXHIBIT</h2>
+    <p class="event-desc">
+      Showcase AI-based innovative solutions, working models, or intelligent systems demonstrating real-world applications.
+    </p>
+
+    <!-- Coordinators Section -->
+    <div class="section">
+      <h3>Event Coordinators</h3>
+
+      <div class="coordinator-grid">
+
+        <div class="coordinator-card">
+          <p><strong>Faculty Coordinator</strong></p>
+          <p>Mr. B. Tharakeswara Raju</p>
+          <a href="tel:+919391916600">📞 +91 9391916600</a>
+        </div>
+
+        <div class="coordinator-card">
+          <p><strong>Senior Coordinator</strong></p>
+          <p>Priya Darshini</p>
+          <a href="tel:+919014989332">📞 +91 9014989332</a>
+        </div>
+
+        <div class="coordinator-card">
+          <p><strong>Coordinator</strong></p>
+          <p>Rudra Teja</p>
+          <a href="tel:+919440058160">📞 +91 9440058160</a>
+        </div>
+
+        <div class="coordinator-card">
+          <p><strong>Coordinator</strong></p>
+          <p>Jashwanth</p>
+          <a href="tel:+919063020479">📞 +91 9063020479</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Rules Section -->
+    <div class="section rules-section">
+      <h3>Event Rules</h3>
+      <ol>
+        <li>Minimum 5 slides and maximum 10 slides are allowed.</li>
+        <li>Presentation time must be strictly between 4-5 minutes.</li>
+        <li>Participation is allowed individually or in teams of up to 3 members.</li>
+        <li>AI tools are permitted, but effective usage is important.</li>
+        <li>Content should be clear, logical, and original.</li>
+        <li>Plagiarism or copied content will lead to low marks or disqualification.</li>
+        <li>Marks are based on explanation clarity, AI relevance, innovation, and presentation skills.</li>
+        <li>Participants must follow all event rules and maintain discipline.</li>
+      </ol>
+
+      <p class="team-size">Team Size: 1 – 3 Members</p>
+    </div>
+
+    <!-- Close Button -->
+    <button type="button" class="close-btn" onclick="closeModal('aiDetails')">
+      Close
+    </button>
+
+  </div>
+</div>
+<div class="modal" id="iqDetails">
+  <div class="modal-box">
+
+    <h2>IQNITE</h2>
+
+    <p class="event-desc">
+      IQNITE is a competitive quiz event designed to test participants'
+      knowledge in Artificial Intelligence and Machine Learning
+      through multiple challenging rounds.
+    </p>
+
+    <!-- COORDINATOR SECTION -->
+    <div class="coordinator-section">
+      <h3>Event Coordinators</h3>
+
+      <div class="coordinator-grid">
+
+        <div class="coordinator-card">
+          <h4>Faculty Coordinator</h4>
+          <p>Mrs. R. Usha</p>
+          <a href="tel:+917032389459">📞 +91 7032389459</a>
+        </div>
+
+        <div class="coordinator-card">
+          <h4>Senior Coordinator</h4>
+          <p>Kumar Raja</p>
+          <a href="tel:+919849411037">📞 +91 9849411037</a>
+        </div>
+
+        <div class="coordinator-card">
+          <h4>Senior Coordinator</h4>
+          <p>Karthik</p>
+          <a href="tel:+919959186924">📞 +91 9959186924</a>
+        </div>
+
+        <div class="coordinator-card">
+          <h4>Coordinator</h4>
+          <p>Kusuma</p>
+          <a href="tel:+918897932748">📞 +91 8897932748</a>
+        </div>
+
+        <div class="coordinator-card">
+          <h4>Coordinator</h4>
+          <p>Naga Charitha</p>
+          <a href="tel:+919177505560">📞 +91 9177505560</a>
+        </div>
+
+        <div class="coordinator-card">
+          <h4>Coordinator</h4>
+          <p>Bhavitha</p>
+          <a href="tel:+919390286782">📞 +91 9390286782</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RULES SECTION -->
+    <div class="rules-section">
+      <h3>🧩 IQNITE RULES</h3>
+      <ol>
+        <li>Participants must compete individually.</li>
+        <li>Mobiles, smart watches, and internet are strictly prohibited.</li>
+        <li>Any malpractice results in immediate disqualification.</li>
+        <li>Report 15 minutes early to the venue.</li>
+        <li>Judges’ and coordinators’ decisions are final.</li>
+        <li>Top 50% advance to Round 2.</li>
+        <li>Top 30–40% advance to Round 3.</li>
+        <li>Top one participant is the winner.</li>
+      </ol>
+    </div>
+
+    <button type="button" class="close-btn" onclick="closeModal('iqDetails')">
+      Close
+    </button>
+
+  </div>
+</div>
+
+
+
+
+ <div class="modal" id="glitchDetails">
+  <div class="modal-box">
+
+    <h2>GLITCH HUNT</h2>
+
+    <p class="event-desc">
+      Debugging competition to fix errors quickly.
+    </p>
+     <h3>🎓 Event Coordinators</h3>
+    <!-- COORDINATORS SECTION -->
+    <div class="coordinator-grid">
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Mr. P. Udaya Kumar</p>
+        <a href="tel:+916381240108">📞 +91 6381240108</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Gowthami</p>
+        <a href="tel:+919347001613">📞 +91 9347001613</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Amrutha</p>
+        <a href="tel:+918712240192">📞 +91 8712240192</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Likitha</p>
+        <a href="tel:+919346166450">📞 +91 9346166450</a>
+      </div>
+
+    </div>
+     <!-- RULES SECTION -->
+    <div class="rules-section">
+      <h3>🧩 GLITCH HUNT RULES</h3>
+      <ol>
+        <li>Team participation as per event guidelines.</li>
+        <li>Participants must follow the time limits for each level.</li>
+        <li>Judges’ and coordinators’ decisions will be final and binding.</li>
+      </ol>
+    </div>
+
+    <button type="button" class="close-btn"
+      onclick="closeModal('glitchDetails')">
+      Close
+    </button>
+
+  </div>
+</div>
+
+<div class="modal" id="queensDetails">
+  <div class="modal-box">
+
+    <h2>TECH QUEENS</h2>
+
+    <p class="event-desc">
+      Project showcase event for innovative ideas.
+    </p>
+
+    <!-- COORDINATORS SECTION (First) -->
+    <div class="coordinator-grid">
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Dr. E. Sandhya</p>
+        <a href="tel:+917989189465">📞 +91 7989189465</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Mr. P. Azam</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Akhila</p>
+        <a href="tel:+919390258904">📞 +91 9390258904</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Chandana Deepthi</p>
+        <a href="tel:+919347742160">📞 +91 9347742160</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Niharika</p>
+        <a href="tel:+919440358409">📞 +91 9440358409</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Tejomai</p>
+        <a href="tel:+918247048165">📞 +91 8247048165</a>
+      </div>
+
+    </div>
+
+    <!-- RULES SECTION (After Coordinators) -->
+    <div class="rules-section">
+      <h3>🧩 TECH QUEENS RULES</h3>
+      <ol>
+        <li>Report to the venue on time.</li>
+        <li>Event is exclusively for girls.</li>
+        <li>Participation allowed as individual or duo.</li>
+        <li>PPT must include problem, explanation & solution.</li>
+        <li>Slides limit: 7–8 slides.</li>
+        <li>PowerPoint (PPT) is preferred.</li>
+        <li>Time limit: approx. 10 minutes per participant.</li>
+        <li>Judges’ decision will be final.</li>
+      </ol>
+    </div>
+
+    <button type="button" class="close-btn"
+      onclick="closeModal('queensDetails')">
+      Close
+    </button>
+
+  </div>
+</div>
+
 
   <!-- REGISTER MODALS -->
   <div class="modal" id="paperRegister">
@@ -896,98 +1267,543 @@ section, div {
 
 
   <!-- DETAILS MODALS -->
-  <div class="modal" id="buzzDetails">
-    <div class="modal-box">
-      <h2>BUZZ GAMES</h2>
-      <p>Paper Presentation Competition for innovative research ideas.</p>
-      <div class="coordinator">Faculty-Coordinator: Mr. V. Sivaraman | <a href="tel:+91 9629590800" style="text-decoration:none;">📞 +91 9629590800</a></div>
-      <div class="coordinator">Sr. Coordinator: Raghupathi | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Sr. Coordinator: Mahesh | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Sr. Coordinator: Jagadeesh | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Sr. Coordinator: Jayanth Varun | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Coordinator: Vennela | <a href="tel:+91 7330665213" style="text-decoration:none;">📞 +91 7330665213</a></div>
-      <div class="coordinator">Coordinator: Ram | <a href="tel:+91 9063808532" style="text-decoration:none;">📞 +91 9063808532</a></div>
-      <div class="coordinator">Coordinator: Bhavya | <a href="tel:+91 9014115078" style="text-decoration:none;">📞 +91 9014115078</a></div>
-      <div class="coordinator">Coordinator: Jyothirmayee | <a href="tel:+91 8919051336" style="text-decoration:none;">📞 +91 8919051336</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('buzzDetails')">Close</button>
-    </div>
-  </div>
+ <div class="modal" id="buzzDetails">
+  <div class="modal-box">
 
-  <div class="modal" id="grainDetails">
-    <div class="modal-box">
-      <h2>GRAIN GRAB</h2>
-      <p>Showcase AI-based innovative solutions and models.</p>
-      <div class="coordinator">Faculty-Coordinator: Dr. R. Praveen Kumar | <a href="tel:+91 9492692166" style="text-decoration:none;">📞 +91 9492692166</a></div>
-      <div class="coordinator">Faculty-Coordinator: Mr. B. Tharakeswara Raju | <a href="tel:+91 9391916600" style="text-decoration:none;">📞 +91 9391916600</a></div>
-      <div class="coordinator">Sr. Coordinator: Nandini | <a href="tel:+91 7659907076" style="text-decoration:none;">📞 +91 7659907076</a></div>
-      <div class="coordinator">Coordinator: Ananya | <a href="tel:+91 8317644877" style="text-decoration:none;">📞 +91 8317644877</a></div>
-      <div class="coordinator">Coordinator: Ankitha | <a href="tel:+91 9390517963" style="text-decoration:none;">📞 +91 9390517963</a></div>
-      <div class="coordinator">Coordinator: Ramya Sri | <a href="tel:+91 8639610940" style="text-decoration:none;">📞 +91 8639610940</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('grainDetails')">Close</button>
-    </div>
-  </div>
+    <h2>BUZZ GAMES</h2>
 
-  <div class="modal" id="esportsDetails">
-    <div class="modal-box">
-      <h2>E-SPORTS</h2>
-      <p>Debugging competition to fix errors quickly.</p>
-      <div class="coordinator">Faculty-Coordinator: Mr. P. Udaya Kumar | <a href="tel:+91 6381240108" style="text-decoration:none;">📞 +91 6381240108</a></div>
-      <div class="coordinator">Faculty-Coordinator: Mr. Subhas Das | <a href="tel:+91 7551817633" style="text-decoration:none;">📞 +91 7551817633</a></div>
-      <div class="coordinator">Sr. Coordinator: Sai Krishna | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Sr. Coordinator: Surya | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Sr. Coordinator: Noorul Hussain | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Coordinator: Roony Williams | <a href="tel:+91 9392077007" style="text-decoration:none;">📞 +91 9392077007</a></div>
-      <div class="coordinator">Coordinator: Shanmukha Sreenivas | <a href="tel:+91 9573306193" style="text-decoration:none;">📞 +91 9573306193</a></div>
-      <div class="coordinator">Coordinator: Harsha Vardhan | <a href="tel:+91 9391143639" style="text-decoration:none;">📞 +91 9391143639</a></div>
-      <div class="coordinator">Coordinator: Abhishek | <a href="tel:+91 8688086937" style="text-decoration:none;">📞 +91 8688086937</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('esportsDetails')">Close</button>
+    <p class="event-desc">
+      Fun multi-level competition including quiz and rapid challenge rounds.
+    </p>
+
+    <!-- COORDINATORS SECTION -->
+    <div class="coordinator-grid">
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Mr. V. Sivaraman</p>
+        <a href="tel:+919629590800">📞 +91 9629590800</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Raghupathi</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Mahesh</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Jagadeesh</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Jayanth Varun</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Vennela</p>
+        <a href="tel:+917330665213">📞 +91 7330665213</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Ram</p>
+        <a href="tel:+919063808532">📞 +91 9063808532</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Bhavya</p>
+        <a href="tel:+919014115078">📞 +91 9014115078</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Jyothirmayee</p>
+        <a href="tel:+918919051336">📞 +91 8919051336</a>
+      </div>
+
     </div>
+
+    <!-- RULES SECTION -->
+    <div class="rules-section">
+      <h3>🧩 BUZZ GAMES RULES</h3>
+
+      <p><strong>✅ General</strong></p>
+      <ol>
+        <li>Follow instructions. No mobiles. No cheating.</li>
+        <li>Violations lead to disqualification. Decision is final.</li>
+      </ol>
+
+      <p><strong>🟡 Level 1 – Movie Buzz</strong></p>
+      <ol>
+        <li>Quiz (Batch of 4) — Buzz & answer.</li>
+        <li>Top 2 teams qualify.</li>
+      </ol>
+
+      <p><strong>🔵 Level 2 – Balloon Cup</strong></p>
+      <ol>
+        <li>3 minutes. Balloon must be held in mouth only.</li>
+        <li>No hands allowed. Top teams qualify.</li>
+      </ol>
+
+      <p><strong>🔴 Level 3 – Final Round</strong></p>
+      <ol>
+        <li>5 minutes total — 4 mini games.</li>
+        <li>Fastest team wins. Time exceed = Disqualification.</li>
+      </ol>
+    </div>
+
+    <button type="button" class="close-btn"
+      onclick="closeModal('buzzDetails')">
+      Close
+    </button>
+
   </div>
+</div>
+
+
+<div class="modal" id="grainDetails">
+  <div class="modal-box">
+
+    <h2>GRAIN GRAB</h2>
+
+    <p class="event-desc">
+      A fun skill-based challenge testing concentration, accuracy, and speed.
+    </p>
+
+    <!-- COORDINATORS SECTION -->
+    <div class="coordinator-grid">
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Dr. R. Praveen Kumar</p>
+        <a href="tel:+919492692166">📞 +91 9492692166</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Mr. B. Tharakeswara Raju</p>
+        <a href="tel:+919391916600">📞 +91 9391916600</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Nandini</p>
+        <a href="tel:+917659907076">📞 +91 7659907076</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Ananya</p>
+        <a href="tel:+918317644877">📞 +91 8317644877</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Ankitha</p>
+        <a href="tel:+919390517963">📞 +91 9390517963</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Ramya Sri</p>
+        <a href="tel:+918639610940">📞 +91 8639610940</a>
+      </div>
+
+    </div>
+
+    <!-- RULES SECTION -->
+    <div class="rules-section">
+      <h3>🧩 GRAIN GRAB RULES</h3>
+
+      <ol>
+        <li>Participation is individual (1 member only).</li>
+        <li>Follow coordinator instructions and game rules strictly.</li>
+        <li>Participants must report on time and cooperate with organizers.</li>
+        <li>Using two hands leads to immediate disqualification.</li>
+        <li>Cheating or unfair play is strictly prohibited.</li>
+        <li>The game consists of 3 levels; qualifiers depend on total registrations.</li>
+        <li>Final round includes 8 participants. Top 2 become Winner & Runner-up.</li>
+        <li>Results are based on concentration, accuracy, and fair play.</li>
+      </ol>
+    </div>
+
+    <button type="button" class="close-btn"
+      onclick="closeModal('grainDetails')">
+      Close
+    </button>
+
+  </div>
+</div>
+
+
+<div class="modal" id="esportsDetails">
+  <div class="modal-box">
+
+    <h2>E-SPORTS</h2>
+
+    <p class="event-desc">
+      Competitive gaming tournament featuring BGMI and Free Fire battle rounds.
+    </p>
+
+    <!-- COORDINATORS SECTION -->
+    <div class="coordinator-grid">
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Mr. P. Udaya Kumar</p>
+        <a href="tel:+916381240108">📞 +91 6381240108</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Mr. Subhas Das</p>
+        <a href="tel:+917551817633">📞 +91 7551817633</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Sai Krishna</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Surya</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Noorul Hussain</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Roony Williams</p>
+        <a href="tel:+919392077007">📞 +91 9392077007</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Shanmukha Sreenivas</p>
+        <a href="tel:+919573306193">📞 +91 9573306193</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Harsha Vardhan</p>
+        <a href="tel:+919391143639">📞 +91 9391143639</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Abhishek</p>
+        <a href="tel:+918688086937">📞 +91 8688086937</a>
+      </div>
+
+    </div>
+
+    <!-- RULES SECTION -->
+    <div class="rules-section">
+      <h3>🧩 E-SPORTS RULES</h3>
+
+      <!-- BGMI -->
+      <p><strong>🎮 BGMI</strong></p>
+      <ol>
+        <li>Round 1: Erangel / Livik | Squad of 4 players | Top 8 qualify.</li>
+        <li>Matches are monitored by coordinators.</li>
+        <li>Round 2: Group A vs B (TDM) — One match each | ~4 winners qualify.</li>
+        <li>Round 3: TDM — Winners advance to Finals.</li>
+      </ol>
+
+      <p><strong>🚫 TDM Restrictions</strong></p>
+      <ol>
+        <li>Sliding must be OFF.</li>
+        <li>Only M416 is allowed.</li>
+        <li>No extra guns or pistols.</li>
+        <li>No throwables allowed.</li>
+        <li>No rule violations during matches.</li>
+      </ol>
+
+      <!-- FREE FIRE -->
+      <p><strong>🔥 FREE FIRE</strong></p>
+      <ol>
+        <li>Bermuda Map | Squad of maximum 4 players.</li>
+        <li>Matches are monitored by coordinators.</li>
+        <li>Round 1: All teams play — Top 8 qualify.</li>
+        <li>Round 2: Group A vs B (Clash Squad) — Winners qualify.</li>
+        <li>Round 3: Clash Squad — Winners advance to Finals.</li>
+        <li>No Gloo Wall breaking.</li>
+        <li>No Gloo Pack in the last zone.</li>
+        <li>No throwables allowed.</li>
+        <li>No hacks, panels, or rule violations.</li>
+      </ol>
+    </div>
+
+    <button type="button" class="close-btn"
+      onclick="closeModal('esportsDetails')">
+      Close
+    </button>
+
+  </div>
+</div>
+
  
-  <div class="modal" id="tugDetails">
-    <div class="modal-box">
-      <h2>TUG OF WAR</h2>
-      <p>Quiz competition testing AI and ML knowledge.</p>
-      <div class="coordinator">Faculty-Coordinator: Mr. BSH. Shayeez | <a href="tel:+91 9966390973" style="text-decoration:none;">📞 +91 9966390973</a></div>
-      <div class="coordinator">Faculty-Coordinator: Mr. G. Nithin | <a href="tel:+91 9440476321" style="text-decoration:none;">📞 +91 9440476321</a></div>
-      <div class="coordinator">Sr. Coordinator: Vineesha | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Sr. Coordinator: Asritha | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Sr. Coordinator: umair | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 98765 43210</a></div>
-      <div class="coordinator">Coordinator: Nada Shaik | <a href="tel:+91 9490402623" style="text-decoration:none;">📞 +91 9490402623</a></div>
-      <div class="coordinator">Coordinator: Vyshnavi | <a href="tel:+91 9154790706" style="text-decoration:none;">📞 +91 9154790706</a></div>
-      <div class="coordinator">Coordinator: Pavan | <a href="tel:+91 8971466750" style="text-decoration:none;">📞 +91 8971466750</a></div>
-      <div class="coordinator">Coordinator: Venkatesh | <a href="tel:+91 9440630828" style="text-decoration:none;">📞 +91 9440630828</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('tugDetails')">Close</button>
-    </div>
-  </div>
+<div class="modal" id="tugDetails">
+  <div class="modal-box">
 
-  <div class="modal" id="auctionDetails">
-    <div class="modal-box">
-      <h2>AUCTION ARENA</h2>
-      <p>Project showcase event for innovative ideas.</p>
-      <div class="coordinator">Faculty-Coordinator: Mr. Subhas Das | <a href="tel:+91 7551817633" style="text-decoration:none;">📞 +91 7551817633</a></div>
-      <div class="coordinator">Sr. Coordinator:  Lekha Sree | <a href="tel:+91 9676512443" style="text-decoration:none;">📞 +91 9676512443</a></div>
-      <div class="coordinator">Sr. Coordinator: Mujahid | <a href="tel:+91 9741884173" style="text-decoration:none;">📞 +91 9741884173</a></div>
-      <div class="coordinator">Coordinator: Nanda Kishore | <a href="tel:+91 7416959516" style="text-decoration:none;">📞 +91 7416959516</a></div>
-      <div class="coordinator">Coordinator: Karthik | <a href="tel:+91 9492373104" style="text-decoration:none;">📞 +91 9492373104</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('auctionDetails')">Close</button>
-    </div>
-  </div>
+    <h2>TUG OF WAR</h2>
 
-  <div class="modal" id="dodgeDetails">
-    <div class="modal-box">
-      <h2>DODGE BALL</h2>
-      <p>Ability And Strategy</p>
-      <div class="coordinator">Faculty-Coordinator: Mr. G. Nithin | <a href="tel:+91 9440476321" style="text-decoration:none;">📞 +91 9440476321</a></div>
-      <div class="coordinator">Sr. Coordinator: Harshitha | <a href="tel:+91 8309041154" style="text-decoration:none;">📞 +91 8309041154</a></div>
-      <div class="coordinator">Sr. Coordinator: Reddy Lokesh | <a href="tel:+91 7569455160" style="text-decoration:none;">📞 +91 7569455160</a></div>
-      <div class="coordinator">Coordinator: Harshitha | <a href="tel:+91 7793914843" style="text-decoration:none;">📞 +91 7793914843</a></div>
-      <div class="coordinator">Coordinator: Sai Varshini | <a href="tel:+91 98765 43210" style="text-decoration:none;">📞 +91 9177505560</a></div>
-      <div class="coordinator">Coordinator: Balaji | <a href="tel:+91 7095850603" style="text-decoration:none;">📞 +91 7095850603</a></div>
-      <div class="coordinator">Coordinator: Viswa Teja | <a href="tel:+91 7893315990" style="text-decoration:none;">📞 +91 7893315990</a></div>
-      <button type="button" class="close-btn" onclick="closeModal('dodgeDetails')">Close</button>
+    <p class="event-desc">
+      A team strength competition testing coordination, power, and strategy.
+    </p>
+
+    <!-- COORDINATORS SECTION -->
+    <div class="coordinator-grid">
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Mr. BSH. Shayeez</p>
+        <a href="tel:+919966390973">📞 +91 9966390973</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Mr. G. Nithin</p>
+        <a href="tel:+919440476321">📞 +91 9440476321</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Vineesha</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Asritha</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Umair</p>
+        <a href="tel:+919876543210">📞 +91 9876543210</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Nada Shaik</p>
+        <a href="tel:+919490402623">📞 +91 9490402623</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Vyshnavi</p>
+        <a href="tel:+919154790706">📞 +91 9154790706</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Pavan</p>
+        <a href="tel:+918971466750">📞 +91 8971466750</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Venkatesh</p>
+        <a href="tel:+919440630828">📞 +91 9440630828</a>
+      </div>
+
     </div>
+
+    <!-- RULES SECTION -->
+    <div class="rules-section">
+      <h3>🧩 TUG OF WAR RULES</h3>
+
+      <ol>
+        <li>Each team must have equal players (6–8 members).</li>
+        <li>The center mark of the rope starts aligned with the ground center line.</li>
+        <li>Teams must pull until the center mark crosses their winning line.</li>
+        <li>The match begins only on the referee’s whistle.</li>
+        <li>Proper sports shoes are required (no spikes unless permitted).</li>
+        <li>Hands only — tying the rope or sitting is not allowed. Players must remain standing.</li>
+        <li>No early pulling or unfair play. The first team to cross the line wins.</li>
+      </ol>
+    </div>
+
+    <button type="button" class="close-btn"
+      onclick="closeModal('tugDetails')">
+      Close
+    </button>
+
   </div>
+</div>
+
+
+<div class="modal" id="auctionDetails">
+  <div class="modal-box">
+
+    <h2>AUCTION ARENA</h2>
+
+    <p class="event-desc">
+      A strategic bidding competition testing decision-making and team management skills.
+    </p>
+
+    <!-- COORDINATORS SECTION -->
+    <div class="coordinator-grid">
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Mr. Subhas Das</p>
+        <a href="tel:+917551817633">📞 +91 7551817633</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Lekha Sree</p>
+        <a href="tel:+919676512443">📞 +91 9676512443</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Mujahid</p>
+        <a href="tel:+919741884173">📞 +91 9741884173</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Nanda Kishore</p>
+        <a href="tel:+917416959516">📞 +91 7416959516</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Karthik</p>
+        <a href="tel:+919492373104">📞 +91 9492373104</a>
+      </div>
+
+    </div>
+
+    <!-- RULES SECTION -->
+    <div class="rules-section">
+      <h3>🧩 AUCTION ARENA RULES</h3>
+
+      <ol>
+        <li>Team size: Minimum 1 and maximum 3 members.</li>
+        <li>Only the player category will be revealed before bidding.</li>
+        <li>Bids must be clear and placed within the given time limit.</li>
+        <li>Once placed, a bid cannot be withdrawn.</li>
+        <li>Each team will receive a fixed amount of virtual money.</li>
+        <li>Negative balance is strictly not allowed.</li>
+        <li>Maintain discipline — no arguments or unfair means.</li>
+        <li>Winner will be decided based on the highest total team value.</li>
+        <li>In case of a tie, the team with higher remaining virtual money wins.</li>
+      </ol>
+    </div>
+
+    <button type="button" class="close-btn"
+      onclick="closeModal('auctionDetails')">
+      Close
+    </button>
+
+  </div>
+</div>
+
+
+<div class="modal" id="dodgeDetails">
+  <div class="modal-box">
+
+    <h2>DODGE BALL</h2>
+
+    <p class="event-desc">
+      A fast-paced team game testing agility, strategy, and coordination.
+    </p>
+
+    <!-- COORDINATORS SECTION -->
+    <div class="coordinator-grid">
+
+      <div class="coordinator-card">
+        <h4>Faculty Coordinator</h4>
+        <p>Mr. G. Nithin</p>
+        <a href="tel:+919440476321">📞 +91 9440476321</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Harshitha</p>
+        <a href="tel:+918309041154">📞 +91 8309041154</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Sr. Coordinator</h4>
+        <p>Reddy Lokesh</p>
+        <a href="tel:+917569455160">📞 +91 7569455160</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Harshitha</p>
+        <a href="tel:+917793914843">📞 +91 7793914843</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Sai Varshini</p>
+        <a href="tel:+919177505560">📞 +91 9177505560</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Balaji</p>
+        <a href="tel:+917095850603">📞 +91 7095850603</a>
+      </div>
+
+      <div class="coordinator-card">
+        <h4>Coordinator</h4>
+        <p>Viswa Teja</p>
+        <a href="tel:+917893315990">📞 +91 7893315990</a>
+      </div>
+
+    </div>
+
+    <!-- RULES SECTION -->
+    <div class="rules-section">
+      <h3>🧩 DODGE BALL RULES</h3>
+
+      <ol>
+        <li>Only registered players are allowed. Proper sports attire is compulsory.</li>
+        <li>Players must follow referee instructions at all times.</li>
+        <li>The game is played between an Inside Team and an Outside Team.</li>
+        <li>Ball hits below the knee result in OUT. Hits above the knee (head/torso) are invalid.</li>
+        <li>Stepping outside the court boundary leads to elimination.</li>
+        <li>Each round has a fixed time limit. Teams switch after all inside players are out.</li>
+        <li>Rough play, arguments, or unfair behavior result in disqualification.</li>
+        <li>The team with maximum eliminations or minimum completion time is declared the winner.</li>
+      </ol>
+    </div>
+
+    <button type="button" class="close-btn"
+      onclick="closeModal('dodgeDetails')">
+      Close
+    </button>
+
+  </div>
+</div>
+
 
   <!-- REGISTER MODALS -->
   <div class="modal" id="buzzRegister">
@@ -1037,10 +1853,10 @@ section, div {
       <h2>E-SPORTS</h2>
       <p>Select Registration Type</p>
       <button type="button" class="event-btn register-btn" onclick="window.open('https://forms.gle/ro1Yyxh97spMpSk16')">Internal
-        ₹150</button>
+        ₹200</button>
       <br><br>
       <button type="button" class="event-btn register-btn" onclick="window.open('https://forms.gle/zPYFLizJiRiZjovE6')">External
-        ₹200</button>
+        ₹250</button>
       <br><br>
       <button type="button" class="close-btn" onclick="closeModal('esportsRegister')">Close</button>
     </div>
